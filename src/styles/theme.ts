@@ -4,17 +4,31 @@ export const colors = {
 };
 
 export const borders = {
-  darkBlue: `solid 1px ${colors.darkBlue}`
+  darkBlue: `solid 1px ${colors.darkBlue}`,
+};
+
+export const breakpoints = {
+  desktop: '@media(min-width: 1000px)',
+  mobileOnly: '@media(max-width: 699px)',
+  tabletUp: '@media(min-width: 700px)',
+};
+
+export const mobileSizes = {
+  h1: '20px',
+  subtitle: '40px',
+  text: '12px',
+  title: '50px',
 };
 
 export const sizes = {
-  h1: '50px',
-  subtitle: '20px',
+  h1: '30px',
+  subtitle: '65px',
   text: '16px',
-  title: '100px',
+  title: '80px',
 };
 
 export const spacing = {
+  huge: '128px',
   l: '24px',
   m: '16px',
   ml: '20px',
@@ -25,7 +39,7 @@ export const spacing = {
   xxl: '40px',
   xxxl: '48px',
   xxxxl: '64px',
-  xxxxxl: '78px',
+  xxxxxl: '76px',
 };
 
 export const transitions = {

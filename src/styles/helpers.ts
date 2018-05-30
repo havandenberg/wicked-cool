@@ -17,6 +17,22 @@ const getMarginValue = (
   return undefined;
 };
 
+export const withCenter = ({
+  center,
+}: {
+  center?: boolean;
+}): CSSProperties => ({
+  textAlign: center ? 'center' : undefined,
+});
+
+export const withNoWrap = ({
+  noWrap,
+}: {
+  noWrap?: boolean;
+}): CSSProperties => ({
+  whiteSpace: noWrap ? 'nowrap' : undefined,
+});
+
 export const withSpacing = ({
   all,
   bottom,

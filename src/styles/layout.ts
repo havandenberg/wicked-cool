@@ -1,6 +1,6 @@
 import glamorous from 'glamorous';
 import { withSpacing } from './helpers';
-import { colors, maxWidth, spacing } from './theme';
+import { maxWidth, spacing } from './theme';
 
 const Column = glamorous.div(({ flex = 1 }: { flex?: string | number }) => ({
   flex,
@@ -63,7 +63,6 @@ const CenteredRow = glamorous(Row)({
 });
 
 const Header = glamorous(CenteredRow)({
-  background: colors.white,
   justifyContent: 'space-between',
   padding: spacing.xxl,
 });
