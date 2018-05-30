@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Cuprum';
+  src: url('../assets/fonts/Cuprum-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cuprum Bold';
+  src: url('../assets/fonts/Cuprum-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cuprum Bold Italic';
+  src: url('../assets/fonts/Cuprum-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cuprum Italic';
+  src: url('../assets/fonts/Cuprum-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ice';
+  src: url('../assets/fonts/Ice.ttf') format('truetype');
+}
