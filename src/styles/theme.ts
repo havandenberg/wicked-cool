@@ -23,7 +23,7 @@ export const mobileSizes = {
 export const sizes = {
   h1: '30px',
   subtitle: '65px',
-  text: '16px',
+  text: '20px',
   title: '80px',
 };
 

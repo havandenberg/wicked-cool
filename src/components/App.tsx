@@ -41,6 +41,10 @@ const Domain = glamorous.span({
   },
 });
 
+const Or = glamorous(t.Text)({
+  fontSize: sizes.text
+})
+
 const Phone = glamorous(t.Text)({
   color: colors.lightBlue,
   fontFamily: 'Cuprum Bold',
@@ -63,6 +67,12 @@ class App extends React.Component {
         </t.Text>
         <Phone center={true} top={spacing.l}>
           603-524-0445
+        </Phone>
+        <Or center={true} top={spacing.s}>
+          or
+        </Or>
+        <Phone center={true} top={spacing.s}>
+          wickedcool444@gmail.com
         </Phone>
         <t.Text center={true} top={spacing.l}>
           for any service requests.
