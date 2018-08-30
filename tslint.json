@@ -4,6 +4,15 @@
     "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
   },
   "rules": {
-    "interface-name": [false]
-  }
+    "jsx-boolean-value": false,
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "interface-name": false,
+    "no-var-requires": false,
+    "max-classes-per-file": false,
+    "no-console": [false],
+    "no-unused-variable": true,
+    "member-access": [true, "no-public"]
+  },
+  "jsRules": { "no-console": false }
 }

@@ -5,10 +5,11 @@
 }
 
 body {
+  background-color: #F9FDFF;
   margin: 0;
   padding: 0;
   overflow-y: scroll;
-  font-family: 'Federo', sans-serif;
+  font-family: 'Cuprum', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

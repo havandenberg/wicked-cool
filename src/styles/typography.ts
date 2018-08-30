@@ -1,134 +1,109 @@
-import glamorous from 'glamorous';
-import { withCenter, withNoWrap, withSpacing } from './helpers';
-import { breakpoints, colors, mobileSizes, sizes, spacing } from './theme';
+import styled from 'react-emotion';
+import { color, fontSize, space } from 'styled-system';
+import {
+  breakpoints,
+  colors,
+  fontSizes,
+  mobileSizes,
+  tabletSizes,
+} from './theme';
 
-interface TextProps {
-  inline?: boolean;
-  noWrap?: boolean;
-  scale?: string;
-  all?: string;
-  bottom?: string;
-  horizontal?: string;
-  left?: string;
-  right?: string;
-  top?: string;
-  vertical?: string;
-  center?: boolean;
-}
+const textOptions = [
+  ({ bold }: { bold?: boolean }) => ({
+    fontWeight: bold ? 'bold' : undefined
+  }),
+  ({ center }: { center?: boolean }) => ({
+    textAlign: center ? 'center' : undefined
+  }),
+  color,
+  fontSize,
+  ({ nowrap }: { nowrap?: boolean }) => ({
+    whiteSpace: nowrap ? 'nowrap' : undefined
+  }),
+  space,
+];
 
-export const Title = glamorous.div<TextProps>(
-  {
-    color: colors.lightBlue,
-    fontFamily: 'Ice, sans-serif',
-    fontSize: sizes.title,
-    fontWeight: 200,
-    textShadow: `-1px 0 ${colors.darkBlue}, 0 1px ${colors.darkBlue}, 1px 0 ${
-      colors.darkBlue
-    }, 0 -1px ${colors.darkBlue}`,
-    [breakpoints.mobileOnly]: {
-      fontSize: mobileSizes.title,
-    },
+export const Title = styled('div')({
+  color: colors.lightBlue,
+  fontFamily: 'Ice, sans-serif',
+  fontSize: fontSizes.title,
+  fontWeight: 200,
+  textShadow: `-1px 0 ${colors.darkBlue}, 0 1px ${colors.darkBlue}, 1px 0 ${
+    colors.darkBlue
+  }, 0 -1px ${colors.darkBlue}`,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.title,
   },
-  withCenter,
-  withSpacing,
-);
-
-export const Subtitle = glamorous.div<TextProps>(
-  {
-    color: colors.darkBlue,
-    fontFamily: 'Ice, sans-serif',
-    fontSize: sizes.subtitle,
-    fontWeight: 200,
-    [breakpoints.mobileOnly]: {
-      fontSize: mobileSizes.subtitle,
-    },
+  [breakpoints.mobileOnly]: {
+    fontSize: mobileSizes.title,
   },
-  withCenter,
-  withSpacing,
-);
+}, ...textOptions);
 
-export const H1 = glamorous.h1<TextProps>(
-  {
-    color: colors.lightBlue,
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: sizes.h1,
-    padding: 0,
-    [breakpoints.mobileOnly]: {
-      fontSize: mobileSizes.h1,
-    },
+export const Subtitle = styled('div')({
+  color: colors.darkBlue,
+  fontFamily: 'Ice, sans-serif',
+  fontSize: fontSizes.subtitle,
+  fontWeight: 200,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.subtitle,
   },
-  withCenter,
-  withSpacing,
-);
-
-export const H2 = glamorous.h2<TextProps>(
-  {
-    color: 'black',
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: '',
-    padding: 0,
+  [breakpoints.mobileOnly]: {
+    fontSize: mobileSizes.subtitle,
   },
-  withCenter,
-  withSpacing,
-);
+}, ...textOptions);
 
-export const H3 = glamorous.h3<TextProps>(
-  {
-    color: 'black',
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: '',
-    padding: 0,
+export const H1 = styled('div')({
+  color: colors.darkBlue,
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: fontSizes.h1,
+  is: 'h1',
+  padding: 0,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.h1,
   },
-  withCenter,
-  withSpacing,
-);
-
-export const Label = glamorous.div<TextProps>(
-  {
-    color: 'black',
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: '',
+  [breakpoints.mobileOnly]: {
+    fontSize: mobileSizes.h1,
   },
-  withCenter,
-  withNoWrap,
-  withSpacing,
-);
+}, ...textOptions);
 
-export const Text = glamorous.div<TextProps>(
-  {
-    color: colors.darkBlue,
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: sizes.h1,
-    [breakpoints.mobileOnly]: {
-      fontSize: mobileSizes.h1,
-    },
+export const H2 = styled('div')({
+  color: colors.lightBlue,
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: '',
+  is: 'h2',
+  padding: 0,
+}, ...textOptions);
+
+export const H3 = styled('div')({
+  color: 'black',
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: '',
+  is: 'h3',
+  padding: 0,
+}, ...textOptions);
+
+export const Text = styled('div')({
+  color: colors.darkBlue,
+  fontFamily: 'Cuprum, sans-serif',
+  fontSize: fontSizes.text,
+  letterSpacing: 1.5,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.text,
   },
-  withCenter,
-  withSpacing,
-);
+  [breakpoints.mobileOnly]: {
+    fontSize: mobileSizes.text,
+  },
+}, ...textOptions);
 
-export const ItalicsText = glamorous(Text)({
+export const ItalicText = styled(Text)({
   fontStyle: 'italic',
 });
-
-export const Paragraph = glamorous.p<TextProps>(
-  {
-    color: 'black',
-    fontFamily: 'Cuprum, sans-serif',
-    fontSize: '',
-    margin: `${spacing.s} 0`,
-  },
-  withCenter,
-  withSpacing,
-);
 
 export default {
   H1,
   H2,
   H3,
-  ItalicsText,
-  Label,
-  Paragraph,
+  ItalicText,
   Subtitle,
   Text,
   Title,

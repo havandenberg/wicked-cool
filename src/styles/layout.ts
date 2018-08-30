@@ -1,10 +1,5 @@
-import glamorous from 'glamorous';
-import { withSpacing } from './helpers';
-import { maxWidth, spacing } from './theme';
-
-const Column = glamorous.div(({ flex = 1 }: { flex?: string | number }) => ({
-  flex,
-}));
+import styled from 'react-emotion';
+import { space, SpaceProps, width, WidthProps } from 'styled-system';
 
 interface RowProps {
   alignBottom?: boolean;
@@ -23,17 +18,18 @@ interface RowProps {
   isWrap?: boolean;
 }
 
-const Row = glamorous.div<RowProps>(
+const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
   {
     alignItems: 'center',
   },
-  withSpacing,
+  space,
+  width,
   ({
     alignBottom,
     alignTop,
     inline,
     itemClassName = '',
-    margins = 0,
+    margins = '0',
     spaceBetween,
     isWrap,
   }: {
@@ -52,34 +48,28 @@ const Row = glamorous.div<RowProps>(
       flexWrap: isWrap ? 'wrap' : undefined,
       justifyContent: spaceBetween ? 'space-between' : undefined,
       [marginKey]: {
-        marginLeft: margins !== 0 ? margins : undefined,
+        marginLeft: margins !== '0' ? margins : undefined,
       },
     };
   },
 );
 
-const CenteredRow = glamorous(Row)({
+const Center = styled('div')(
+  {
+    margin: '0 auto',
+  },
+  space
+);
+
+ const CenteredRow = styled(Row)({
   justifyContent: 'center',
 });
 
-const Header = glamorous(CenteredRow)({
-  justifyContent: 'space-between',
-  padding: spacing.xxl,
-});
+ const Space = styled('div')(space);
 
-const PageContent = glamorous.div({
-  margin: '0 auto',
-  maxWidth,
-  padding: spacing.xxl,
-});
-
-const Spacing = glamorous.div(withSpacing);
-
-export default {
+ export default {
+  Center,
   CenteredRow,
-  Column,
-  Header,
-  PageContent,
   Row,
-  Spacing,
+  Space,
 };

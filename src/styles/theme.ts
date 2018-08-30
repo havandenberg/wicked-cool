@@ -1,30 +1,40 @@
 export const colors = {
+  background: '#F9FDFF',
   darkBlue: '#0D3674',
   lightBlue: '#168ACF',
+  white: '#FFFFFF',
 };
 
 export const borders = {
   darkBlue: `solid 1px ${colors.darkBlue}`,
+  white: `solid 1px ${colors.white}`,
 };
 
 export const breakpoints = {
-  desktop: '@media(min-width: 1000px)',
-  mobileOnly: '@media(max-width: 699px)',
-  tabletUp: '@media(min-width: 700px)',
+  desktop: '@media (min-width: 1000px)',
+  mobileOnly: '@media (max-width: 699px)',
+  tabletOnly: '@media (min-width: 700px) and (max-width: 999px)',
+  tabletUp: '@media (min-width: 700px)',
+};
+
+export const fontSizes = {
+  h1: '24px',
+  largeText: '20px',
+  subtitle: '48px',
+  text: '16px',
+  title: '64px',
+};
+
+export const tabletSizes = {
+  ...fontSizes,
 };
 
 export const mobileSizes = {
-  h1: '20px',
-  subtitle: '40px',
+  h1: '16px',
+  largeText: '16px',
+  subtitle: '32px',
   text: '12px',
-  title: '50px',
-};
-
-export const sizes = {
-  h1: '30px',
-  subtitle: '65px',
-  text: '20px',
-  title: '80px',
+  title: '40px',
 };
 
 export const spacing = {
