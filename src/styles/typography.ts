@@ -3,6 +3,7 @@ import { color, fontSize, space } from 'styled-system';
 import {
   breakpoints,
   colors,
+  fonts,
   fontSizes,
   mobileSizes,
   tabletSizes,
@@ -23,9 +24,9 @@ const textOptions = [
   space,
 ];
 
-export const Title = styled('div')({
+const Title = styled('div')({
   color: colors.lightBlue,
-  fontFamily: 'Ice, sans-serif',
+  fontFamily: fonts.ice,
   fontSize: fontSizes.title,
   fontWeight: 200,
   textShadow: `-1px 0 ${colors.darkBlue}, 0 1px ${colors.darkBlue}, 1px 0 ${
@@ -39,9 +40,9 @@ export const Title = styled('div')({
   },
 }, ...textOptions);
 
-export const Subtitle = styled('div')({
+const Subtitle = styled('div')({
   color: colors.darkBlue,
-  fontFamily: 'Ice, sans-serif',
+  fontFamily: fonts.ice,
   fontSize: fontSizes.subtitle,
   fontWeight: 200,
   [breakpoints.tabletOnly]: {
@@ -52,11 +53,11 @@ export const Subtitle = styled('div')({
   },
 }, ...textOptions);
 
-export const H1 = styled('div')({
+const H1 = styled('h1')({
   color: colors.darkBlue,
-  fontFamily: 'Cuprum, sans-serif',
+  fontFamily: fonts.ice,
   fontSize: fontSizes.h1,
-  is: 'h1',
+  margin: 0,
   padding: 0,
   [breakpoints.tabletOnly]: {
     fontSize: tabletSizes.h1,
@@ -66,25 +67,30 @@ export const H1 = styled('div')({
   },
 }, ...textOptions);
 
-export const H2 = styled('div')({
+const H2 = styled('h2')({
   color: colors.lightBlue,
-  fontFamily: 'Cuprum, sans-serif',
-  fontSize: '',
-  is: 'h2',
+  fontFamily: fonts.cuprum,
+  fontSize: fontSizes.h2,
+  margin: 0,
   padding: 0,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.h2,
+  },
+  [breakpoints.mobileOnly]: {
+    fontSize: mobileSizes.h2,
+  },
 }, ...textOptions);
 
-export const H3 = styled('div')({
+const H3 = styled('h3')({
   color: 'black',
-  fontFamily: 'Cuprum, sans-serif',
+  fontFamily: fonts.cuprum,
   fontSize: '',
-  is: 'h3',
   padding: 0,
 }, ...textOptions);
 
-export const Text = styled('div')({
+const Text = styled('div')({
   color: colors.darkBlue,
-  fontFamily: 'Cuprum, sans-serif',
+  fontFamily: fonts.cuprum,
   fontSize: fontSizes.text,
   letterSpacing: 1.5,
   [breakpoints.tabletOnly]: {
@@ -95,11 +101,21 @@ export const Text = styled('div')({
   },
 }, ...textOptions);
 
-export const ItalicText = styled(Text)({
+const ItalicText = styled(Text)({
   fontStyle: 'italic',
 });
 
+const Anchor = styled('a')({
+  ":link": {
+    color: colors.lightBlue,
+  },
+  ":visited": {
+    color: colors.lightBlue,
+  },
+});
+
 export default {
+  Anchor,
   H1,
   H2,
   H3,

@@ -1,9 +1,10 @@
 import styled from 'react-emotion';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
+import { breakpoints } from './theme';
 
 interface RowProps {
   alignBottom?: boolean;
-  alignTop?: boolean;
+  alignTop?: boolean; columnOnMobile?: boolean;
   inline?: boolean;
   itemClassName?: string;
   margins?: string;
@@ -27,6 +28,7 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
   ({
     alignBottom,
     alignTop,
+    columnOnMobile,
     inline,
     itemClassName = '',
     margins = '0',
@@ -35,6 +37,7 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
   }: {
     alignBottom?: boolean;
     alignTop?: boolean;
+    columnOnMobile?: boolean,
     inline?: boolean;
     itemClassName?: string;
     margins?: string;
@@ -50,6 +53,9 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
       [marginKey]: {
         marginLeft: margins !== '0' ? margins : undefined,
       },
+      [breakpoints.mobileOnly]: columnOnMobile ? {
+        flexDirection: 'column',
+      } : {},
     };
   },
 );

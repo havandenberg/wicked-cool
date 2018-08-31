@@ -41,7 +41,6 @@ const FooterInfo = styled(l.Row)({
 const FooterInfoText = styled(t.Text)({
   color: colors.white,
   fontSize: fontSizes.largeText,
-  fontWeight: 'bold',
   marginBottom: spacing.m,
   [breakpoints.mobileOnly]: {
     fontSize: fontSizes.text,
@@ -148,7 +147,7 @@ const Footer = () => (
         <FooterBottomText mt={[spacing.m, '0']}>
           <Label mb={spacing.ml}>Hours of Operation:</Label>
           <FooterInfoText>
-            Monday – Friday, 8am – 5pm
+            Monday – Friday: 8am – 5pm
           </FooterInfoText>
           <FooterInfoText>
             Closed Saturday & Sunday
@@ -165,7 +164,7 @@ const Footer = () => (
         </LogoRow>
         <FooterBottomText>
           <t.Text color={colors.white} mb={spacing.s}>Copyright © {new Date().getFullYear()} Wicked Cool Refrigeration</t.Text>
-          <t.Text color={colors.white} mb={[spacing.m, '0']}>Site designed & developed by Halsey Vandenberg</t.Text>
+          <t.Text color={colors.white} mb={[spacing.m, '0']}>Site developed by Halsey Vandenberg</t.Text>
         </FooterBottomText>
       </FooterBottom>
     </FooterInner>

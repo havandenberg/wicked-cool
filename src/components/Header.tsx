@@ -12,8 +12,8 @@ import {
 } from '../styles/theme';
 import t from '../styles/typography';
 
-const Description = styled(t.H1)({
-  fontSize: fontSizes.h1,
+const Description = styled(t.Text)({
+  fontSize: fontSizes.h2,
   maxWidth: 500,
   width: '50%',
   [breakpoints.tabletOnly]: {

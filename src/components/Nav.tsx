@@ -2,15 +2,38 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import { NavLink } from 'react-router-dom';
 import l from '../styles/layout';
-import { breakpoints, colors, fontSizes, spacing, transitions } from '../styles/theme';
+import {
+  breakpoints,
+  colors,
+  fontSizes,
+  gradients,
+  spacing,
+  transitions
+} from '../styles/theme';
 import t from '../styles/typography';
 
 const NavItemText = styled(t.Text)({
   ".active &": {
-      background: colors.darkBlue,
+      backgroundImage: gradients.darkBlue,
+  },
+  ":before": {
+    backgroundImage: gradients.darkBlue,
+    borderRadius: "inherit",
+    content: '""',
+    display: "block",
+    height: "100%",
+    left: 0,
+    opacity: 0,
+    position: "absolute",
+    top: 0,
+    transition: transitions.default,
+    width: "100%",
+    zIndex: -1,
   },
   ":hover": {
-    background: colors.darkBlue,
+    ":before": {
+      opacity: 1
+    },
   },
   alignItems: 'center',
   cursor: 'pointer',
@@ -18,7 +41,8 @@ const NavItemText = styled(t.Text)({
   fontWeight: 'bold',
   height: '100%',
   padding: spacing.m,
-  transition: transitions.default,
+  position: 'relative',
+  zIndex: 1,
   [breakpoints.mobileOnly]: {
     fontSize: 10,
     height: 36,
