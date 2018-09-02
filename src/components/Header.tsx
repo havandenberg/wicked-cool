@@ -20,6 +20,7 @@ const Description = styled(t.Text)({
     width: '80%',
   },
   [breakpoints.mobileOnly]: {
+    fontSize: fontSizes.text,
     width: '90%',
   },
 });

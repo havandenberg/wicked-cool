@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
+import { withRouter } from 'react-router-dom';
 import { space } from 'styled-system';
 import BottomIciclesImg from '../assets/images/bottom-icicles.svg';
 import SnowflakeImg from '../assets/images/snowflake-footer.svg';
@@ -23,7 +24,7 @@ const FooterBottom = styled(l.Row)({
   },
 });
 
-const FooterBottomText = styled('div')({
+export const FooterBottomText = styled('div')({
   fontSize: fontSizes.text,
   textAlign: 'right',
   [breakpoints.mobileOnly]: {
@@ -31,14 +32,14 @@ const FooterBottomText = styled('div')({
   },
 }, space);
 
-const FooterInfo = styled(l.Row)({
+export const FooterInfo = styled(l.Row)({
   [breakpoints.mobileOnly]: {
     alignItems: 'center',
     flexDirection: 'column',
   },
 });
 
-const FooterInfoText = styled(t.Text)({
+export const FooterInfoText = styled(t.Text)({
   color: colors.white,
   fontSize: fontSizes.largeText,
   marginBottom: spacing.m,
@@ -95,15 +96,19 @@ const LogoText = styled(t.Text)({
   },
 });
 
-const Icicles = styled('img')({
-  height: 500,
-  marginLeft: '50%',
-  transform: 'translateX(-50%)',
-  width: maxWidth,
-  [breakpoints.mobileOnly]: {
-    height: 675,
+const Icicles = styled('img')(
+  {
+    marginLeft: '50%',
+    transform: 'translateX(-50%)',
+    width: maxWidth,
   },
-});
+  ({ contactHeight }: { contactHeight?: boolean }) => ({
+    height: contactHeight ? 250 : 500,
+    [breakpoints.mobileOnly]: {
+      height: contactHeight ? 315 : 675,
+    },
+  }),
+);
 
 const Snowflake = styled('img')(
   {
@@ -121,39 +126,41 @@ const Snowflake = styled('img')(
   }),
 );
 
-const Footer = () => (
+const Footer = ({ location }: { location: { pathname: string } }) => (
   <FooterWrapper>
-    <Icicles src={BottomIciclesImg} />
+    <Icicles contactHeight={location.pathname === '/contact'} src={BottomIciclesImg} />
     <FooterInner>
-      <FooterInfo alignTop spaceBetween width="80%" mb={[spacing.m, spacing.xxl]}>
-        <div>
-          <Label mb={spacing.ml}>Contact Information:</Label>
-          <l.Row alignTop>
-            <l.Space ml={[spacing.s, '0']} mr={spacing.xl}>
-              <FooterInfoText>Address:</FooterInfoText>
-              <FooterInfoText mt={[spacing.xl, spacing.xxl]}>Phone:</FooterInfoText>
-              <FooterInfoText>Email:</FooterInfoText>
-            </l.Space>
-            <div>
-              <FooterInfoText>
-                315 Hillcrest Dr<br />
-                Laconia, NH 03246
-              </FooterInfoText>
-              <FooterInfoText>603-524-0445</FooterInfoText>
-              <FooterInfoText>wickedcool444@gmail.com</FooterInfoText>
-            </div>
-          </l.Row>
-        </div>
-        <FooterBottomText mt={[spacing.m, '0']}>
-          <Label mb={spacing.ml}>Hours of Operation:</Label>
-          <FooterInfoText>
-            Monday – Friday: 8am – 5pm
-          </FooterInfoText>
-          <FooterInfoText>
-            Closed Saturday & Sunday
-          </FooterInfoText>
-        </FooterBottomText>
-      </FooterInfo>
+      {location.pathname !== '/contact' &&
+        <FooterInfo alignTop spaceBetween width="80%" mb={[spacing.m, spacing.xxl]}>
+          <div>
+            <Label mb={spacing.ml}>Contact Information:</Label>
+            <l.Row alignTop>
+              <l.Space ml={[spacing.s, '0']} mr={spacing.xl}>
+                <FooterInfoText>Address:</FooterInfoText>
+                <FooterInfoText mt={[spacing.xl, spacing.xxl]}>Phone:</FooterInfoText>
+                <FooterInfoText>Email:</FooterInfoText>
+              </l.Space>
+              <div>
+                <FooterInfoText>
+                  315 Hillcrest Dr<br />
+                  Laconia, NH 03246
+                </FooterInfoText>
+                <FooterInfoText>603-524-0445</FooterInfoText>
+                <FooterInfoText>wickedcool444@gmail.com</FooterInfoText>
+              </div>
+            </l.Row>
+          </div>
+          <FooterBottomText mt={[spacing.m, '0']}>
+            <Label mb={spacing.ml}>Hours of Operation:</Label>
+            <FooterInfoText>
+              Monday – Friday: 8am – 5pm
+            </FooterInfoText>
+            <FooterInfoText>
+              Closed Saturday & Sunday
+            </FooterInfoText>
+          </FooterBottomText>
+        </FooterInfo>
+      }
       <FooterBottom px={[spacing.s, spacing.l]} py={spacing.m} spaceBetween>
         <LogoRow>
           <Snowflake src={SnowflakeImg} />
@@ -163,12 +170,16 @@ const Footer = () => (
           <Snowflake hideOnDesktop src={SnowflakeImg} />
         </LogoRow>
         <FooterBottomText>
-          <t.Text color={colors.white} mb={spacing.s}>Copyright © {new Date().getFullYear()} Wicked Cool Refrigeration</t.Text>
-          <t.Text color={colors.white} mb={[spacing.m, '0']}>Site developed by Halsey Vandenberg</t.Text>
+          <t.Text color={colors.white} mb={spacing.s}>
+            Copyright © {new Date().getFullYear()} Wicked Cool Refrigeration
+          </t.Text>
+          <t.Text color={colors.white} mb={[spacing.m, '0']}>
+            Site developed by Halsey Vandenberg
+          </t.Text>
         </FooterBottomText>
       </FooterBottom>
     </FooterInner>
   </FooterWrapper>
 );
 
-export default Footer;
+export default withRouter(Footer);

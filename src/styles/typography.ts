@@ -82,10 +82,17 @@ const H2 = styled('h2')({
 }, ...textOptions);
 
 const H3 = styled('h3')({
-  color: 'black',
+  color: colors.darkBlue,
   fontFamily: fonts.cuprum,
-  fontSize: '',
+  fontSize: fontSizes.largeText,
+  margin: 0,
   padding: 0,
+  [breakpoints.tabletOnly]: {
+    fontSize: tabletSizes.largeText,
+  },
+  [breakpoints.mobileOnly]: {
+    fontSize: tabletSizes.largeText,
+  },
 }, ...textOptions);
 
 const Text = styled('div')({

@@ -67,11 +67,12 @@ export const spacing = {
 };
 
 export const transitions = {
-  default: 'all 0.3s ease',
+  default: 'all 0.2s ease',
 };
 
 export const gradients = {
   darkBlue: 'linear-gradient(to top, #0d3674, #1e66ac)',
+  lightBlue: 'linear-gradient(to top, #168ACF, #40B1F4)',
 }
 
 export const maxWidth = '1400px';

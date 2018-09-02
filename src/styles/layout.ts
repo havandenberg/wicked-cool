@@ -4,7 +4,8 @@ import { breakpoints } from './theme';
 
 interface RowProps {
   alignBottom?: boolean;
-  alignTop?: boolean; columnOnMobile?: boolean;
+  alignTop?: boolean;
+  columnOnMobile?: boolean;
   inline?: boolean;
   itemClassName?: string;
   margins?: string;
@@ -53,9 +54,9 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
       [marginKey]: {
         marginLeft: margins !== '0' ? margins : undefined,
       },
-      [breakpoints.mobileOnly]: columnOnMobile ? {
-        flexDirection: 'column',
-      } : {},
+      [breakpoints.mobileOnly]: columnOnMobile
+        ? { flexDirection: 'column', }
+        : {},
     };
   },
 );

@@ -17,23 +17,19 @@ const Main = styled('div')({
   maxWidth,
 })
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <Main>
-          <Header />
-          <Nav />
-          <Route exact path="/" component={Home} />
-          <Route path="/commercial-ac" component={CommercialAC} />
-          <Route path="/freezer-cooler" component={FreezerCooler} />
-          <Route path="/maintenance-plans" component={MaintenancePlans} />
-          <Route path="/contact" component={Contact} />
-          <Footer />
-        </Main>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <Main>
+      <Header />
+      <Nav />
+      <Route exact path="/" component={Home} />
+      <Route path="/commercial-ac" component={CommercialAC} />
+      <Route path="/freezer-cooler" component={FreezerCooler} />
+      <Route path="/maintenance-plans" component={MaintenancePlans} />
+      <Route path="/contact" component={Contact} />
+      <Footer />
+    </Main>
+  </Router>
+);
 
 export default App;

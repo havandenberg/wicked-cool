@@ -65,7 +65,7 @@ const NavItem = ({ text, to }: { text: string, to: string }) => (
 );
 
 const NavWrapper = styled(l.CenteredRow)({
-  background: colors.lightBlue,
+  background: gradients.lightBlue,
   width: '100%',
 });
 
