@@ -12,7 +12,11 @@
     "max-classes-per-file": false,
     "no-console": [false],
     "no-unused-variable": true,
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "trailing-comma": [true, { "multiline": "always", "singleline": "never" }],
+    "quotemark": [true, "single", "jsx-double"]
   },
-  "jsRules": { "no-console": false }
+  "jsRules": {
+    "no-console": false
+  }
 }

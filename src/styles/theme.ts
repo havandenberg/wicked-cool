@@ -3,7 +3,7 @@ export const colors = {
   darkBlue: '#0D3674',
   lightBlue: '#168ACF',
   red: '#D94D44',
-  white: '#FFFFFF'
+  white: '#FFFFFF',
 };
 
 export const borders = {
@@ -15,7 +15,7 @@ export const borders = {
   red: `solid 2px ${colors.red}`,
   transparent: `solid 1px transparent`,
   transparentThick: `solid 2px transparent`,
-  white: `solid 1px ${colors.white}`
+  white: `solid 1px ${colors.white}`,
 };
 
 export const breakpoints = {
@@ -23,12 +23,12 @@ export const breakpoints = {
   iphone5: '@media (max-width: 320px)',
   mobileOnly: '@media (max-width: 699px)',
   tabletOnly: '@media (min-width: 700px) and (max-width: 999px)',
-  tabletUp: '@media (min-width: 700px)'
+  tabletUp: '@media (min-width: 700px)',
 };
 
 export const fonts = {
   cuprum: 'Cuprum, sans-serif',
-  ice: 'Ice, sans-serif'
+  ice: 'Ice, sans-serif',
 };
 
 export const fontSizes = {
@@ -37,11 +37,11 @@ export const fontSizes = {
   largeText: '20px',
   subtitle: '48px',
   text: '16px',
-  title: '64px'
+  title: '64px',
 };
 
 export const tabletSizes = {
-  ...fontSizes
+  ...fontSizes,
 };
 
 export const mobileSizes = {
@@ -50,13 +50,13 @@ export const mobileSizes = {
   largeText: '16px',
   subtitle: '32px',
   text: '12px',
-  title: '40px'
+  title: '40px',
 };
 
 export const shadows = {
   box: '0 10px 6px -6px #777',
-  text: '1px 2px 3px rgba(0,0,0,0.3)'
-}
+  text: '1px 2px 3px rgba(0,0,0,0.3)',
+};
 
 export const spacing = {
   huge: '128px',
@@ -70,16 +70,16 @@ export const spacing = {
   xxl: '40px',
   xxxl: '48px',
   xxxxl: '64px',
-  xxxxxl: '76px'
+  xxxxxl: '76px',
 };
 
 export const transitions = {
-  default: 'all 0.2s ease'
+  default: 'all 0.2s ease',
 };
 
 export const gradients = {
   darkBlue: 'linear-gradient(to top, #0d3674, #1e66ac)',
-  lightBlue: 'linear-gradient(to top, #168ACF, #40B1F4)'
-}
+  lightBlue: 'linear-gradient(to top, #168ACF, #40B1F4)',
+};
 
 export const maxWidth = '1400px';

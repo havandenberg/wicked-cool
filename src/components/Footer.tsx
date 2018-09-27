@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import {withRouter} from 'react-router-dom';
-import {space} from 'styled-system';
+import { withRouter } from 'react-router-dom';
+import { space } from 'styled-system';
 import BottomIciclesImg from '../assets/images/bottom-icicles.svg';
 import EmailImg from '../assets/images/email-white.svg';
 import PhoneImg from '../assets/images/phone-white.svg';
@@ -13,38 +13,40 @@ import {
   colors,
   fontSizes,
   maxWidth,
-  spacing
+  spacing,
 } from '../styles/theme';
 import t from '../styles/typography';
-import {PhoneIcon} from './CTAs';
+import { PhoneIcon } from './CTAs';
 
-const FooterBottom = styled(l.Row)({
-  width: '100%',
-  [breakpoints.mobileOnly]: {
-    alignItems: 'left',
-    flexDirection: 'column-reverse'
-  }
-}, ({contact} : {
-  contact?: boolean
-}) => ({
-  borderTop: contact
-    ? undefined
-    : borders.white
-}));
+const FooterBottom = styled(l.Row)(
+  {
+    width: '100%',
+    [breakpoints.mobileOnly]: {
+      alignItems: 'left',
+      flexDirection: 'column-reverse',
+    },
+  },
+  ({ contact }: { contact?: boolean }) => ({
+    borderTop: contact ? undefined : borders.white,
+  }),
+);
 
-export const FooterBottomText = styled('div')({
-  fontSize: fontSizes.text,
-  textAlign: 'right',
-  [breakpoints.mobileOnly]: {
-    textAlign: 'center'
-  }
-}, space);
+export const FooterBottomText = styled('div')(
+  {
+    fontSize: fontSizes.text,
+    textAlign: 'right',
+    [breakpoints.mobileOnly]: {
+      textAlign: 'center',
+    },
+  },
+  space,
+);
 
 export const FooterInfo = styled(l.Row)({
   [breakpoints.mobileOnly]: {
     alignItems: 'center',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 });
 
 export const FooterInfoText = styled(t.Text)({
@@ -52,14 +54,14 @@ export const FooterInfoText = styled(t.Text)({
   fontSize: fontSizes.largeText,
   marginBottom: spacing.m,
   [breakpoints.mobileOnly]: {
-    fontSize: fontSizes.text
-  }
+    fontSize: fontSizes.text,
+  },
 });
 
 export const FooterInfoTextWrapper = styled(l.Space)({
   [breakpoints.iphone5]: {
-    marginRight: spacing.s
-  }
+    marginRight: spacing.s,
+  },
 });
 
 const FooterInner = styled('div')({
@@ -75,11 +77,14 @@ const FooterInner = styled('div')({
   width: '100%',
   [breakpoints.mobileOnly]: {
     bottom: spacing.t,
-    padding: `0 ${spacing.s}`
-  }
+    padding: `0 ${spacing.s}`,
+  },
 });
 
-const FooterWrapper = styled('div')({overflow: 'hidden', position: 'relative'});
+const FooterWrapper = styled('div')({
+  overflow: 'hidden',
+  position: 'relative',
+});
 
 const Label = styled(t.Text)({
   color: colors.white,
@@ -87,15 +92,15 @@ const Label = styled(t.Text)({
   textTransform: 'uppercase',
   [breakpoints.mobileOnly]: {
     fontSize: fontSizes.text,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 const LogoRow = styled(l.Row)({
   [breakpoints.mobileOnly]: {
     justifyContent: 'space-between',
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 const LogoText = styled(t.Text)({
@@ -103,103 +108,126 @@ const LogoText = styled(t.Text)({
   fontSize: fontSizes.largeText,
   fontWeight: 'bold',
   [breakpoints.mobileOnly]: {
-    fontSize: fontSizes.text
-  }
+    fontSize: fontSizes.text,
+  },
 });
 
-const Icicles = styled('img')({
-  marginLeft: '50%',
-  transform: 'translateX(-50%)',
-  width: maxWidth
-}, ({contact} : {
-  contact?: boolean
-}) => ({
-  height: contact
-    ? 150
-    : 500,
-  [breakpoints.mobileOnly]: {
-    height: contact
-      ? 200
-      : 675
-  }
-}),);
-
-const Snowflake = styled('img')({
-  height: 45,
-  marginRight: spacing.ml,
-  [breakpoints.mobileOnly]: {
-    marginRight: 0
+const Icicles = styled('img')(
+  {
+    marginLeft: '50%',
+    transform: 'translateX(-50%)',
+    width: maxWidth,
   },
-  [breakpoints.iphone5]: {
-    height: 35
-  }
-}, ({hideOnDesktop} : {
-  hideOnDesktop?: boolean
-}) => ({
-  display: hideOnDesktop
-    ? 'none'
-    : 'block',
-  [breakpoints.mobileOnly]: {
-    display: 'block'
-  }
-}),);
+  ({ contact }: { contact?: boolean }) => ({
+    height: contact ? 150 : 500,
+    [breakpoints.mobileOnly]: {
+      height: contact ? 200 : 675,
+    },
+  }),
+);
 
-const Footer = ({location} : {
+const Snowflake = styled('img')(
+  {
+    height: 45,
+    marginRight: spacing.ml,
+    [breakpoints.mobileOnly]: {
+      marginRight: 0,
+    },
+    [breakpoints.iphone5]: {
+      height: 35,
+    },
+  },
+  ({ hideOnDesktop }: { hideOnDesktop?: boolean }) => ({
+    display: hideOnDesktop ? 'none' : 'block',
+    [breakpoints.mobileOnly]: {
+      display: 'block',
+    },
+  }),
+);
+
+const Footer = ({
+  location,
+}: {
   location: {
-    pathname: string
-  }
+    pathname: string;
+  };
 }) => (
   <FooterWrapper>
-    <Icicles contact={location.pathname === '/contact'} src={BottomIciclesImg}/>
+    <Icicles
+      contact={location.pathname === '/contact'}
+      src={BottomIciclesImg}
+    />
     <FooterInner>
-      {location.pathname !== '/contact' && <FooterInfo alignTop spaceBetween width="80%" mb={[spacing.m, spacing.xxl]}>
-        <div>
-          <Label mb={spacing.ml}>Contact Information:</Label>
-          <l.Row alignTop>
-            <FooterInfoTextWrapper ml={[spacing.s, 0]} mr={[spacing.ml, spacing.xl]}>
-              <FooterInfoText>Address:</FooterInfoText>
-              <FooterInfoText mt={[spacing.xl, spacing.xxl]}>Phone:</FooterInfoText>
-              <FooterInfoText mt={[26, spacing.s]}>Email:</FooterInfoText>
-            </FooterInfoTextWrapper>
-            <div>
-              <FooterInfoText>
-                315 Hillcrest Dr<br/>
-                Laconia, NH 03246
-              </FooterInfoText>
-              <FooterInfoText>
-                <t.Anchor border={borders.white} color={colors.white} href="tel:6035240445"><PhoneIcon src={PhoneImg}/>603-524-0445</t.Anchor>
-              </FooterInfoText>
-              <FooterInfoText>
-                <t.Anchor
-                  border={borders.white}
-                  color={colors.white}
-                  href="mailto:wickedcool444@gmail.com"><PhoneIcon height={spacing.l} src={EmailImg}/>wickedcool444@gmail.com</t.Anchor>
-              </FooterInfoText>
-            </div>
-          </l.Row>
-        </div>
-        <FooterBottomText mt={[spacing.s, 0]}>
-          <Label mb={spacing.ml}>Hours of Operation:</Label>
-          <FooterInfoText>
-            Monday – Friday: 8am – 5pm
-          </FooterInfoText>
-          <FooterInfoText>
-            Closed Saturday & Sunday
-          </FooterInfoText>
-        </FooterBottomText>
-      </FooterInfo>
-}
+      {location.pathname !== '/contact' && (
+        <FooterInfo
+          alignTop
+          spaceBetween
+          width="80%"
+          mb={[spacing.m, spacing.xxl]}
+        >
+          <div>
+            <Label mb={spacing.ml}>Contact Information:</Label>
+            <l.Row alignTop>
+              <FooterInfoTextWrapper
+                ml={[spacing.s, 0]}
+                mr={[spacing.ml, spacing.xl]}
+              >
+                <FooterInfoText>Address:</FooterInfoText>
+                <FooterInfoText mt={[spacing.xl, spacing.xxl]}>
+                  Phone:
+                </FooterInfoText>
+                <FooterInfoText mt={[26, spacing.s]}>Email:</FooterInfoText>
+              </FooterInfoTextWrapper>
+              <div>
+                <FooterInfoText>
+                  315 Hillcrest Dr
+                  <br />
+                  Laconia, NH 03246
+                </FooterInfoText>
+                <FooterInfoText>
+                  <t.Anchor
+                    border={borders.white}
+                    color={colors.white}
+                    href="tel:6035240445"
+                  >
+                    <PhoneIcon src={PhoneImg} />
+                    603-524-0445
+                  </t.Anchor>
+                </FooterInfoText>
+                <FooterInfoText>
+                  <t.Anchor
+                    border={borders.white}
+                    color={colors.white}
+                    href="mailto:wickedcool444@gmail.com"
+                  >
+                    <PhoneIcon height={spacing.l} src={EmailImg} />
+                    wickedcool444@gmail.com
+                  </t.Anchor>
+                </FooterInfoText>
+              </div>
+            </l.Row>
+          </div>
+          <FooterBottomText mt={[spacing.s, 0]}>
+            <Label mb={spacing.ml}>Hours of Operation:</Label>
+            <FooterInfoText>Monday – Friday: 8am – 5pm</FooterInfoText>
+            <FooterInfoText>
+              Available for Emergency Calls
+              <br />
+              Saturday, Sunday & After Hours
+            </FooterInfoText>
+          </FooterBottomText>
+        </FooterInfo>
+      )}
       <FooterBottom
         contact={location.pathname === '/contact'}
         px={[spacing.s, spacing.l]}
         py={spacing.m}
-        spaceBetween>
+        spaceBetween
+      >
         <LogoRow>
-          <Snowflake src={SnowflakeImg}/>
-          <LogoText>
-            Wicked Cool Refrigeration
-          </LogoText>
-          <Snowflake hideOnDesktop src={SnowflakeImg}/>
+          <Snowflake src={SnowflakeImg} />
+          <LogoText>Wicked Cool Refrigeration</LogoText>
+          <Snowflake hideOnDesktop src={SnowflakeImg} />
         </LogoRow>
         <FooterBottomText>
           <t.Text color={colors.white} mb={spacing.s}>

@@ -38,7 +38,7 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
   }: {
     alignBottom?: boolean;
     alignTop?: boolean;
-    columnOnMobile?: boolean,
+    columnOnMobile?: boolean;
     inline?: boolean;
     itemClassName?: string;
     margins?: string;
@@ -55,7 +55,7 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
         marginLeft: margins !== '0' ? margins : undefined,
       },
       [breakpoints.mobileOnly]: columnOnMobile
-        ? { flexDirection: 'column', }
+        ? { flexDirection: 'column' }
         : {},
     };
   },
@@ -65,16 +65,16 @@ const Center = styled('div')(
   {
     margin: '0 auto',
   },
-  space
+  space,
 );
 
- const CenteredRow = styled(Row)({
+const CenteredRow = styled(Row)({
   justifyContent: 'center',
 });
 
- const Space = styled('div')(space);
+const Space = styled('div')(space);
 
- export default {
+export default {
   Center,
   CenteredRow,
   Row,

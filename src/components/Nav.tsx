@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import l from '../styles/layout';
 import {
   breakpoints,
@@ -8,32 +8,32 @@ import {
   fontSizes,
   gradients,
   spacing,
-  transitions
+  transitions,
 } from '../styles/theme';
 import t from '../styles/typography';
 
 const NavItemText = styled(t.Text)({
-  ".active &": {
-    backgroundImage: gradients.darkBlue
-  },
-  ":before": {
+  '.active &': {
     backgroundImage: gradients.darkBlue,
-    borderRadius: "inherit",
+  },
+  ':before': {
+    backgroundImage: gradients.darkBlue,
+    borderRadius: 'inherit',
     content: '""',
-    display: "block",
-    height: "100%",
+    display: 'block',
+    height: '100%',
     left: 0,
     opacity: 0,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     transition: transitions.default,
-    width: "100%",
-    zIndex: -1
+    width: '100%',
+    zIndex: -1,
   },
-  ":hover": {
-    ":before": {
-      opacity: 1
-    }
+  ':hover': {
+    ':before': {
+      opacity: 1,
+    },
   },
   alignItems: 'center',
   cursor: 'pointer',
@@ -46,30 +46,34 @@ const NavItemText = styled(t.Text)({
   [breakpoints.mobileOnly]: {
     fontSize: 10,
     height: 36,
-    padding: spacing.s
-  }
+    padding: spacing.s,
+  },
 });
 
-const NavItem = ({text, to} : {
-  text: string,
-  to: string
-}) => (
+const NavItem = ({ text, to }: { text: string; to: string }) => (
   <NavLink activeClassName="active" exact to={to}>
-    <NavItemText center color={colors.white} fontSize={['10px', fontSizes.text]}>
+    <NavItemText
+      center
+      color={colors.white}
+      fontSize={['10px', fontSizes.text]}
+    >
       {text}
     </NavItemText>
   </NavLink>
 );
 
-const NavWrapper = styled(l.CenteredRow)({background: gradients.lightBlue, width: '100%'});
+const NavWrapper = styled(l.CenteredRow)({
+  background: gradients.lightBlue,
+  width: '100%',
+});
 
 const Nav = () => (
   <NavWrapper>
-    <NavItem text="Home" to="/"/>
-    <NavItem text="Commercial A/C" to="/commercial-ac"/>
-    <NavItem text="Freezer & Cooler" to="/freezer-cooler"/>
-    <NavItem text="Maintenance Plans" to="/maintenance-plans"/>
-    <NavItem text="Contact" to="/contact"/>
+    <NavItem text="Home" to="/" />
+    <NavItem text="Commercial A/C" to="/commercial-ac" />
+    <NavItem text="Freezer & Cooler" to="/freezer-cooler" />
+    <NavItem text="Maintenance Plans" to="/maintenance-plans" />
+    <NavItem text="Contact" to="/contact" />
   </NavWrapper>
 );
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CommercialACImg from '../assets/images/commercial-ac-home.svg';
 import FreezerCoolerImg from '../assets/images/freezer-cooler-home.svg';
 import MaintenanceImg from '../assets/images/maintenance-home.svg';
@@ -13,25 +13,25 @@ import {
   fontSizes,
   shadows,
   spacing,
-  transitions
+  transitions,
 } from '../styles/theme';
 import t from '../styles/typography';
 import CTAs from './CTAs';
 
 const Break = styled('br')({
   [breakpoints.tabletOnly]: {
-    display: 'none'
+    display: 'none',
   },
   [breakpoints.mobileOnly]: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 });
 
 export const Content = styled(t.Text)({
   lineHeight: 1.5,
   [breakpoints.mobileOnly]: {
-    fontSize: fontSizes.text
-  }
+    fontSize: fontSizes.text,
+  },
 });
 
 export const PageContent = styled('div')({
@@ -39,18 +39,18 @@ export const PageContent = styled('div')({
   maxWidth: 850,
   padding: `${spacing.xxxl}`,
   [breakpoints.mobileOnly]: {
-    padding: `${spacing.l} ${spacing.m}`
-  }
+    padding: `${spacing.l} ${spacing.m}`,
+  },
 });
 
-export const PageTitle = styled(t.H1)({fontWeight: 200, lineHeight: 1.25});
+export const PageTitle = styled(t.H1)({ fontWeight: 200, lineHeight: 1.25 });
 
 const ServiceLink = styled(Link)({
-  ":hover": {
-    ".service-title": {
-      color: colors.lightBlue
+  ':hover': {
+    '.service-title': {
+      color: colors.lightBlue,
     },
-    border: borders.lightBlueThick
+    border: borders.lightBlueThick,
   },
   border: borders.transparentThick,
   borderRadius: borders.borderRadius,
@@ -59,106 +59,110 @@ const ServiceLink = styled(Link)({
   transition: transitions.default,
   width: '31%',
   [breakpoints.mobileOnly]: {
-    ":last-child": {
-      marginBottom: 0
+    ':last-child': {
+      marginBottom: 0,
     },
     marginBottom: spacing.l,
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 export const ServicesRow = styled(l.Row)({
   [breakpoints.mobileOnly]: {
     alignItems: 'flex-start',
-    marginLeft: spacing.xl
+    marginLeft: spacing.xl,
   },
   [breakpoints.iphone5]: {
-    marginLeft: 0
-  }
+    marginLeft: 0,
+  },
 });
 
-export const Snowflake = styled('img')({marginRight: spacing.l});
+export const Snowflake = styled('img')({ marginRight: spacing.l });
 
-export const ServiceTitle = styled(t.H2)({
-  color: colors.darkBlue,
-  textAlign: 'center',
-  transition: transitions.default
-}, ({light, shadow} : {
-  light?: boolean;
-  shadow?: boolean
-}) => ({
-  fontWeight: light
-    ? 500
-    : undefined,
-  textShadow: shadow
-    ? shadows.text
-    : undefined
-}));
+export const ServiceTitle = styled(t.H2)(
+  {
+    color: colors.darkBlue,
+    textAlign: 'center',
+    transition: transitions.default,
+  },
+  ({ light, shadow }: { light?: boolean; shadow?: boolean }) => ({
+    fontWeight: light ? 500 : undefined,
+    textShadow: shadow ? shadows.text : undefined,
+  }),
+);
 
 const Home = () => (
   <PageContent>
     <PageTitle center mb={[spacing.xl, spacing.xxxxl]}>
-      Affordable Commercial Refrigeration
-      <Break/>&nbsp;in the Lakes Region
+      Commercial Refrigeration
+      <Break />
+      &nbsp;in the Lakes Region
     </PageTitle>
     <l.Row columnOnMobile spaceBetween mb={[spacing.xl, spacing.xxxxl]}>
       <ServiceLink to="/commercial-ac">
-        <img src={CommercialACImg}/>
-        <ServiceTitle className="service-title" mt={spacing.l} shadow={true}>Commercial A/C
-          <Break/>&nbsp;Service</ServiceTitle>
+        <img src={CommercialACImg} />
+        <ServiceTitle className="service-title" mt={spacing.l} shadow={true}>
+          Commercial Residential
+          <Break />
+          &nbsp;A/C Service
+        </ServiceTitle>
       </ServiceLink>
       <ServiceLink to="/freezer-cooler">
-        <img src={FreezerCoolerImg}/>
-        <ServiceTitle className="service-title" mt={spacing.l} shadow>Cooler & Freezer
-          <Break/>&nbsp;Repair</ServiceTitle>
+        <img src={FreezerCoolerImg} />
+        <ServiceTitle className="service-title" mt={spacing.l} shadow>
+          Commercial Cooler &<Break />
+          &nbsp;Freezer Repair
+        </ServiceTitle>
       </ServiceLink>
       <ServiceLink to="/maintenance-plans">
-        <img src={MaintenanceImg}/>
-        <ServiceTitle className="service-title" mt={spacing.l} shadow>Preventative Maintenance Plans</ServiceTitle>
+        <img src={MaintenanceImg} />
+        <ServiceTitle className="service-title" mt={spacing.l} shadow>
+          Preventative Maintenance Plans
+        </ServiceTitle>
       </ServiceLink>
     </l.Row>
     <Content fontSize={fontSizes.largeText} mb={[spacing.xxl, spacing.xxxxxl]}>
-      Maintain your appliances with commercial refrigeration from Wicked Cool
-      Refrigeration in Laconia, New Hampshire. Our HVAC and refrigeration company
+      Maintain your commercial equipment with Wicked Cool Refrigeration in the
+      Lakes Region of New Hampshire. Our HVAC and refrigeration company
       specializes in commercial refrigeration and air conditioning installation,
       maintenance, and repair. Some of our services include: control-system
       installations, maintenance programs, refrigeration system design and
       installation, refrigerant conversions and upgrades, and much more.
-      <l.Space mt={[spacing.ml, spacing.xl]}/>
-      Our service technicians provide you with the best quality service for all your
-      commercial cooling equipment. We service all makes and models of refrigeration
-      units, icemakers, air conditioners, wine chillers, flower coolers, and more. It
-      is our mission to provide quality service to our customers at reasonable rates.
-      Your satisfaction is guaranteed. We service, maintain, and install virtually any
-      type of air conditioning or refrigeration equipment.
+      <l.Space mt={[spacing.ml, spacing.xl]} />
+      Our service technicians provide you with the best quality service for all
+      your commercial cooling equipment. We service all makes and models of
+      refrigeration units, icemakers, air conditioners, wine chillers, flower
+      coolers, and more. It is our mission to provide quality service to our
+      customers at reasonable rates.
     </Content>
     <ServicesRow
       columnOnMobile
       spaceBetween
       mb={[spacing.xxl, spacing.xxxxxl]}
-      px={[0, spacing.l]}>
+      px={[0, spacing.l]}
+    >
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
-          <Snowflake src={SnowflakeImg}/>
+          <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Free Estimates</ServiceTitle>
         </l.Row>
         <l.Row mb={[spacing.ml, 0]}>
-          <Snowflake src={SnowflakeImg}/>
-          <ServiceTitle light>20+ Years Experience</ServiceTitle>
+          <Snowflake src={SnowflakeImg} />
+          <ServiceTitle light>40+ Years Experience</ServiceTitle>
         </l.Row>
       </div>
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
-          <Snowflake src={SnowflakeImg}/>
+          <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Emergency Repair Services</ServiceTitle>
         </l.Row>
         <l.Row>
-          <Snowflake src={SnowflakeImg}/>
+          <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Fully Licensed & Insured</ServiceTitle>
         </l.Row>
       </div>
     </ServicesRow>
-    <CTAs/>
+    <CTAs />
   </PageContent>
 );
 

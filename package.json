@@ -1,6 +1,6 @@
 {
   "name": "wicked-cool",
-  "version": "0.1.0",
+  "version": "0.2",
   "author": "Halsey Vandenberg",
   "dependencies": {
     "@types/googlemaps": "^3.30.12",
