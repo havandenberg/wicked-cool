@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { colors, maxWidth } from '../styles/theme';
 import CommercialAC from './CommercialAC';
 import Contact from './Contact';
@@ -19,7 +19,7 @@ const Main = styled('div')({
 
 const App = () => (
   <Router>
-    <Main>
+    <Main id="top">
       <Header />
       <Nav />
       <Route exact path="/" component={Home} />
@@ -27,6 +27,7 @@ const App = () => (
       <Route path="/freezer-cooler" component={FreezerCooler} />
       <Route path="/maintenance-plans" component={MaintenancePlans} />
       <Route path="/contact" component={Contact} />
+      <Redirect to="/" />
       <Footer />
     </Main>
   </Router>

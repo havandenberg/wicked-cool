@@ -20,7 +20,7 @@ import { ESTIMATE_ACTION, SERVICE_ACTION } from '../utils/constants';
 
 const CallUs = styled(t.Anchor)({
   transform: `translateY(2px)`,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     transform: `translateY(3px)`,
   },
 });
@@ -58,14 +58,14 @@ const ContactButton = styled(Link)({
   padding: spacing.ml,
   position: 'relative',
   zIndex: 1,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     ':last-child': {
       marginRight: 0,
     },
     marginRight: spacing.ml,
     padding: spacing.m,
   },
-  [breakpoints.iphone5]: {
+  [breakpoints.small]: {
     ':last-child': {
       marginBottom: 0,
       marginRight: 0,
@@ -76,7 +76,7 @@ const ContactButton = styled(Link)({
 });
 
 const ContactButtons = styled(l.CenteredRow)({
-  [breakpoints.iphone5]: {
+  [breakpoints.small]: {
     flexDirection: 'column',
   },
 });
@@ -84,10 +84,10 @@ const ContactButtons = styled(l.CenteredRow)({
 const HiringIcon = styled('img')({
   height: spacing.xl,
   marginRight: spacing.ml,
-  [breakpoints.tabletOnly]: {
+  [breakpoints.tablet]: {
     height: spacing.ml,
   },
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     height: spacing.ml,
   },
 });
@@ -95,7 +95,7 @@ const HiringIcon = styled('img')({
 const HiringText = styled(t.Text)({
   fontSize: fontSizes.largeText,
   lineHeight: 1.75,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
   },
 });
@@ -107,7 +107,7 @@ const HiringTitle = styled(t.H2)({
   fontSize: 32,
   fontWeight: 500,
   justifyContent: 'center',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.h2,
   },
 });

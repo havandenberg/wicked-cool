@@ -19,7 +19,7 @@ const Main = styled('div')({
 
 const Subtitle = styled(t.Subtitle)({
   marginLeft: spacing.xxxl,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     marginLeft: spacing.ml,
   },
 });

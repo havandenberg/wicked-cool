@@ -19,6 +19,7 @@ import {
 } from '../styles/theme';
 import t from '../styles/typography';
 import { SERVICE_ACTION } from '../utils/constants';
+import { scrollToId } from '../utils/scroll';
 import { PhoneIcon } from './CTAs';
 
 const ContactFormWrapper = styled('div')({
@@ -27,7 +28,7 @@ const ContactFormWrapper = styled('div')({
   boxShadow: shadows.box,
   padding: spacing.xl,
   transition: transitions.default,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     padding: `${spacing.l} ${spacing.m}`,
   },
 });
@@ -50,7 +51,7 @@ const inputStyles = {
   flex: 1,
   fontSize: fontSizes.largeText,
   padding: spacing.s,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     width: '100%',
   },
 };
@@ -80,7 +81,7 @@ const InputLabel = styled(t.Text)(
     fontWeight: 'bold',
     marginRight: spacing.l,
     width: '30%',
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: fontSizes.text,
       marginBottom: spacing.ml,
       width: 'auto',
@@ -94,7 +95,7 @@ const InputLabel = styled(t.Text)(
 const InputWrapper = styled(l.Row)({
   margin: `0 auto ${spacing.xl}`,
   width: '90%',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     alignItems: 'flex-start',
     flexDirection: 'column',
     width: 'auto',
@@ -140,7 +141,7 @@ const Submit = styled('button')({
   textAlign: 'center',
   verticalAlign: 'middle',
   zIndex: 1,
-  [breakpoints.iphone5]: {
+  [breakpoints.small]: {
     fontSize: fontSizes.largeText,
     padding: spacing.m,
   },
@@ -159,7 +160,6 @@ interface State {
     name: boolean;
     phone: boolean;
     serviceDate: boolean;
-    serviceTime: boolean;
   };
   failed: boolean;
   loading: boolean;
@@ -167,7 +167,6 @@ interface State {
   name: string;
   phone: string;
   serviceDate: string;
-  serviceTime: string;
 }
 
 const initialState = {
@@ -179,7 +178,6 @@ const initialState = {
     name: false,
     phone: false,
     serviceDate: false,
-    serviceTime: false,
   },
   failed: false,
   loading: false,
@@ -187,19 +185,19 @@ const initialState = {
   name: '',
   phone: '',
   serviceDate: '',
-  serviceTime: '',
 };
 
-type contactField =
-  | 'name'
-  | 'email'
-  | 'phone'
-  | 'message'
-  | 'serviceDate'
-  | 'serviceTime';
+type contactField = 'name' | 'email' | 'phone' | 'message' | 'serviceDate';
 
 class ContactForm extends React.Component<Props, State> {
   state = initialState;
+
+  getSnapshotBeforeUpdate(prevProps: Props) {
+    if (!R.equals(prevProps.action, this.props.action)) {
+      this.resetErrors();
+    }
+    return null;
+  }
 
   handleChange = (field: contactField) => {
     return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -213,15 +211,7 @@ class ContactForm extends React.Component<Props, State> {
   handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { action } = this.props;
-    const {
-      email,
-      loading,
-      message,
-      name,
-      phone,
-      serviceDate,
-      serviceTime,
-    } = this.state;
+    const { email, loading, message, name, phone, serviceDate } = this.state;
 
     if (!loading && this.validate()) {
       this.setState(
@@ -240,7 +230,6 @@ class ContactForm extends React.Component<Props, State> {
                 reply_to: email,
                 request_type: action,
                 service_date: serviceDate,
-                service_time: serviceTime,
               },
               'user_x41YJeHB2mv7uIY1xl7sw',
             )
@@ -255,18 +244,18 @@ class ContactForm extends React.Component<Props, State> {
             );
         },
       );
+    } else {
+      scrollToId('contact-form');
     }
   };
 
   hasErrors = () => {
     const { errors } = this.state;
-    return (
-      errors.name ||
-      errors.email ||
-      errors.phone ||
-      errors.serviceDate ||
-      errors.serviceTime
-    );
+    return errors.name || errors.email || errors.phone || errors.serviceDate;
+  };
+
+  resetErrors = () => {
+    this.setState({ errors: initialState.errors });
   };
 
   resetForm = () => {
@@ -275,14 +264,7 @@ class ContactForm extends React.Component<Props, State> {
 
   validate = () => {
     const { action } = this.props;
-    const {
-      email,
-      message,
-      name,
-      phone,
-      serviceDate,
-      serviceTime,
-    } = this.state;
+    const { email, message, name, phone, serviceDate } = this.state;
 
     const errors = {
       email: false,
@@ -317,18 +299,14 @@ class ContactForm extends React.Component<Props, State> {
       errors.serviceDate = true;
     }
 
-    if (action === SERVICE_ACTION && R.isEmpty(serviceTime)) {
-      errors.serviceTime = true;
-    }
-
     this.setState({ errors });
 
     return (
       !errors.name &&
+      !errors.message &&
       !errors.email &&
       !errors.phone &&
-      !errors.serviceDate &&
-      !errors.serviceTime
+      !errors.serviceDate
     );
   };
 
@@ -344,7 +322,6 @@ class ContactForm extends React.Component<Props, State> {
       name,
       phone,
       serviceDate,
-      serviceTime,
     } = this.state;
 
     return (
@@ -422,26 +399,14 @@ class ContactForm extends React.Component<Props, State> {
                 {action === SERVICE_ACTION && (
                   <InputWrapper>
                     <InputLabel error={errors.serviceDate}>
-                      Service Date*:
+                      Service Date
+                      <l.Break breakpoint="tabletUp" /> (if available)*:
                     </InputLabel>
                     <Input
                       error={errors.serviceDate}
                       onChange={this.handleChange('serviceDate')}
                       placeholder="mm/dd/yyyy, sept 5"
                       value={serviceDate}
-                    />
-                  </InputWrapper>
-                )}
-                {action === SERVICE_ACTION && (
-                  <InputWrapper>
-                    <InputLabel error={errors.serviceTime} mt={spacing.s}>
-                      Service Time*:
-                    </InputLabel>
-                    <Input
-                      error={errors.serviceTime}
-                      onChange={this.handleChange('serviceTime')}
-                      placeholder="5pm, 11:00am, after 3pm"
-                      value={serviceTime}
                     />
                   </InputWrapper>
                 )}

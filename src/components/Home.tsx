@@ -17,19 +17,20 @@ import {
 } from '../styles/theme';
 import t from '../styles/typography';
 import CTAs from './CTAs';
+import withScroll from './hoc/withScroll';
 
 const Break = styled('br')({
-  [breakpoints.tabletOnly]: {
+  [breakpoints.tablet]: {
     display: 'none',
   },
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     display: 'none',
   },
 });
 
 export const Content = styled(t.Text)({
   lineHeight: 1.5,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
   },
 });
@@ -38,7 +39,7 @@ export const PageContent = styled('div')({
   margin: '0 auto',
   maxWidth: 850,
   padding: `${spacing.xxxl}`,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     padding: `${spacing.l} ${spacing.m}`,
   },
 });
@@ -58,7 +59,7 @@ const ServiceLink = styled(Link)({
   textAlign: 'center',
   transition: transitions.default,
   width: '31%',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     ':last-child': {
       marginBottom: 0,
     },
@@ -68,11 +69,11 @@ const ServiceLink = styled(Link)({
 });
 
 export const ServicesRow = styled(l.Row)({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     alignItems: 'flex-start',
     marginLeft: spacing.xl,
   },
-  [breakpoints.iphone5]: {
+  [breakpoints.small]: {
     marginLeft: 0,
   },
 });
@@ -166,4 +167,4 @@ const Home = () => (
   </PageContent>
 );
 
-export default Home;
+export default withScroll(Home);

@@ -20,9 +20,9 @@ export const borders = {
 
 export const breakpoints = {
   desktop: '@media (min-width: 1000px)',
-  iphone5: '@media (max-width: 320px)',
-  mobileOnly: '@media (max-width: 699px)',
-  tabletOnly: '@media (min-width: 700px) and (max-width: 999px)',
+  mobile: '@media (max-width: 699px)',
+  small: '@media (max-width: 320px)',
+  tablet: '@media (min-width: 700px) and (max-width: 999px)',
   tabletUp: '@media (min-width: 700px)',
 };
 
@@ -83,3 +83,12 @@ export const gradients = {
 };
 
 export const maxWidth = '1400px';
+
+export const thumbnailHeight = 300;
+export const thumbnailWidth = 'auto';
+
+export const scrollOptions = {
+  duration: 300,
+  offset: -80,
+  smooth: true,
+};

@@ -5,6 +5,7 @@ import l from '../styles/layout';
 import { fontSizes, spacing } from '../styles/theme';
 import { Heading, ServiceImage, TopContent } from './CommercialAC';
 import CTAs from './CTAs';
+import withScroll from './hoc/withScroll';
 import {
   Content,
   PageContent,
@@ -22,10 +23,10 @@ const MaintenancePlans = () => (
     <l.Row columnOnMobile spaceBetween mb={[spacing.ml, spacing.xxl]}>
       <ServiceImage src={MaintenanceImg} />
       <TopContent fontSize={fontSizes.largeText} ml={[0, spacing.xxl]}>
-        Save money on your equipment with refrigeration maintenance from Wicked
-        Cool Refrigeration. Proper maintenance is the best way to ensure your
-        equipment performs at its best, and to detect or prevent future problems
-        that lead to costly damage.
+        Save money on your equipment with a regularly scheduled maintenance plan
+        from Wicked Cool Refrigeration. Proper maintenance is the best way to
+        ensure your equipment performs at its best, and to detect or prevent
+        future problems that lead to costly damage.
       </TopContent>
     </l.Row>
     <Content fontSize={fontSizes.largeText} mb={[spacing.xl, spacing.xxl]}>
@@ -57,9 +58,13 @@ const MaintenancePlans = () => (
           <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Evaporator Coil</ServiceTitle>
         </l.Row>
-        <l.Row mb={[spacing.ml, 0]}>
+        <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Filter</ServiceTitle>
+        </l.Row>
+        <l.Row mb={[spacing.ml, 0]}>
+          <Snowflake src={SnowflakeImg} />
+          <ServiceTitle light>Door Gaskets</ServiceTitle>
         </l.Row>
       </div>
       <div>
@@ -86,4 +91,4 @@ const MaintenancePlans = () => (
   </PageContent>
 );
 
-export default MaintenancePlans;
+export default withScroll(MaintenancePlans);

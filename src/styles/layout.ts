@@ -1,6 +1,14 @@
 import styled from 'react-emotion';
-import { space, SpaceProps, width, WidthProps } from 'styled-system';
-import { breakpoints } from './theme';
+import {
+  height,
+  HeightProps,
+  space,
+  SpaceProps,
+  width,
+  WidthProps,
+} from 'styled-system';
+import { Breakpoint } from '../types/styles';
+import { breakpoints, colors } from './theme';
 
 interface RowProps {
   alignBottom?: boolean;
@@ -20,10 +28,11 @@ interface RowProps {
   isWrap?: boolean;
 }
 
-const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
+const Row = styled('div')<HeightProps & RowProps & SpaceProps & WidthProps>(
   {
     alignItems: 'center',
   },
+  height,
   space,
   width,
   ({
@@ -35,16 +44,7 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
     margins = '0',
     spaceBetween,
     isWrap,
-  }: {
-    alignBottom?: boolean;
-    alignTop?: boolean;
-    columnOnMobile?: boolean;
-    inline?: boolean;
-    itemClassName?: string;
-    margins?: string;
-    spaceBetween?: boolean;
-    isWrap?: boolean;
-  }) => {
+  }: RowProps) => {
     const marginKey = `& .${itemClassName} + .${itemClassName}`;
     return {
       alignItems: alignTop ? 'flex-start' : alignBottom ? 'flex-end' : 'center',
@@ -54,12 +54,37 @@ const Row = styled('div')<RowProps | SpaceProps | WidthProps>(
       [marginKey]: {
         marginLeft: margins !== '0' ? margins : undefined,
       },
-      [breakpoints.mobileOnly]: columnOnMobile
-        ? { flexDirection: 'column' }
-        : {},
+      [breakpoints.mobile]: columnOnMobile ? { flexDirection: 'column' } : {},
     };
   },
 );
+
+const Break = styled('br')(
+  {
+    display: 'none',
+    flexBasis: '100%',
+    height: '0',
+    overflow: 'hidden',
+    width: '0',
+  },
+  ({ breakpoint = 'all' }: { breakpoint?: Breakpoint }) =>
+    breakpoint === 'all'
+      ? {
+          display: 'block',
+        }
+      : {
+          [breakpoints[breakpoint]]: {
+            display: 'block',
+          },
+        },
+  height,
+  width,
+);
+
+const Caption = styled('div')({
+  color: colors.darkBlue,
+  fontSize: '1rem',
+});
 
 const Center = styled('div')(
   {
@@ -75,6 +100,8 @@ const CenteredRow = styled(Row)({
 const Space = styled('div')(space);
 
 export default {
+  Break,
+  Caption,
   Center,
   CenteredRow,
   Row,

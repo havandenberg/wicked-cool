@@ -3,9 +3,18 @@ import styled from 'react-emotion';
 import FreezerCoolerImg from '../assets/images/freezer-cooler.svg';
 import SnowflakeImg from '../assets/images/snowflake-service.svg';
 import l from '../styles/layout';
-import { breakpoints, fontSizes, spacing } from '../styles/theme';
+import {
+  breakpoints,
+  fontSizes,
+  spacing,
+  thumbnailHeight,
+  thumbnailWidth,
+} from '../styles/theme';
+import { ASSETS_PATH } from '../utils/constants';
 import { Heading, ServiceImage, TopContent } from './CommercialAC';
 import CTAs from './CTAs';
+import GalleryImage from './GalleryImage';
+import withScroll from './hoc/withScroll';
 import {
   Content,
   PageContent,
@@ -16,7 +25,7 @@ import {
 } from './Home';
 
 const TopContentWrapper = styled(l.Row)({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     flexDirection: 'column-reverse',
   },
 });
@@ -29,9 +38,9 @@ const FreezerCooler = () => (
     <TopContentWrapper spaceBetween mb={[spacing.xl, spacing.xl]}>
       <TopContent fontSize={fontSizes.largeText} mr={[0, spacing.xxl]}>
         Keep your business running efficiently with refrigeration repair from
-        Wicked Cool Refrigeration in Laconia, New Hampshire. From refrigeration
-        units, icemakers, and air conditioners, to wine chillers, flower
-        coolers, and more, we've got you covered. You name it, we service it!
+        Wicked Cool Refrigeration. From refrigeration units, icemakers, and air
+        conditioners, to wine chillers, flower coolers, and more, we've got you
+        covered. You name it, we service it!
       </TopContent>
       <ServiceImage src={FreezerCoolerImg} />
     </TopContentWrapper>
@@ -52,53 +61,75 @@ const FreezerCooler = () => (
       <l.Space mt={[spacing.ml, spacing.xl]} />
       Our technicians service walk-in refrigerations and freezers, commercial
       ice machines, cold tables, deli tables, and much more. We specialize in
-      the following models:
+      the following models and more:
     </Content>
     <ServicesRow
       alignTop
       columnOnMobile
       spaceBetween
-      mb={[spacing.xl, spacing.xxxxxl]}
+      mb={[spacing.xl, spacing.xl]}
       px={[0, spacing.l]}
     >
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Trane™</ServiceTitle>
+          <ServiceTitle light>True™</ServiceTitle>
         </l.Row>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>York™</ServiceTitle>
+          <ServiceTitle light>Beverage Aire™</ServiceTitle>
         </l.Row>
         <l.Row mb={[spacing.ml, 0]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Lennox™</ServiceTitle>
+          <ServiceTitle light>Nor Lake™</ServiceTitle>
         </l.Row>
       </div>
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Daikin™</ServiceTitle>
+          <ServiceTitle light>Bally™</ServiceTitle>
         </l.Row>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Arcoaire™</ServiceTitle>
+          <ServiceTitle light>Bohn™</ServiceTitle>
         </l.Row>
         <l.Row mb={[spacing.ml, 0]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Mitsubishi™</ServiceTitle>
+          <ServiceTitle light>Chandler™</ServiceTitle>
         </l.Row>
       </div>
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Goodman™</ServiceTitle>
+          <ServiceTitle light>Larkin™</ServiceTitle>
+        </l.Row>
+        <l.Row mb={[spacing.ml, spacing.xl]}>
+          <Snowflake src={SnowflakeImg} />
+          <ServiceTitle light>Trenton™</ServiceTitle>
+        </l.Row>
+        <l.Row mb={[spacing.ml, spacing.xl]}>
+          <Snowflake src={SnowflakeImg} />
+          <ServiceTitle light>Heatcraft™</ServiceTitle>
         </l.Row>
       </div>
     </ServicesRow>
+    <Heading center mb={spacing.xl}>
+      Featured Projects
+    </Heading>
+    <l.Row mb={[spacing.xl, spacing.xxxxxl]}>
+      <GalleryImage
+        image={{
+          caption: 'Custom wood finish cooler',
+          src: `${ASSETS_PATH}/wooden-wine-cooler.png`,
+          thumbnail: `${ASSETS_PATH}/wooden-wine-cooler.png`,
+          thumbnailHeight,
+          thumbnailWidth,
+        }}
+      />
+    </l.Row>
     <CTAs />
     <l.Space mt={[0, spacing.xxxxxl]} />
   </PageContent>
 );
 
-export default FreezerCooler;
+export default withScroll(FreezerCooler);

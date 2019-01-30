@@ -21,7 +21,7 @@ import { PhoneIcon } from './CTAs';
 const FooterBottom = styled(l.Row)(
   {
     width: '100%',
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       alignItems: 'left',
       flexDirection: 'column-reverse',
     },
@@ -35,7 +35,7 @@ export const FooterBottomText = styled('div')(
   {
     fontSize: fontSizes.text,
     textAlign: 'right',
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       textAlign: 'center',
     },
   },
@@ -43,7 +43,7 @@ export const FooterBottomText = styled('div')(
 );
 
 export const FooterInfo = styled(l.Row)({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     alignItems: 'center',
     flexDirection: 'column',
   },
@@ -53,13 +53,13 @@ export const FooterInfoText = styled(t.Text)({
   color: colors.white,
   fontSize: fontSizes.largeText,
   marginBottom: spacing.m,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
   },
 });
 
 export const FooterInfoTextWrapper = styled(l.Space)({
-  [breakpoints.iphone5]: {
+  [breakpoints.small]: {
     marginRight: spacing.s,
   },
 });
@@ -75,7 +75,7 @@ const FooterInner = styled('div')({
   position: 'absolute',
   transform: 'translateX(-50%)',
   width: '100%',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     bottom: spacing.t,
     padding: `0 ${spacing.s}`,
   },
@@ -90,14 +90,14 @@ const Label = styled(t.Text)({
   color: colors.white,
   fontSize: fontSizes.text,
   textTransform: 'uppercase',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
     textAlign: 'center',
   },
 });
 
 const LogoRow = styled(l.Row)({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     justifyContent: 'space-between',
     width: '100%',
   },
@@ -107,7 +107,7 @@ const LogoText = styled(t.Text)({
   color: colors.white,
   fontSize: fontSizes.largeText,
   fontWeight: 'bold',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
   },
 });
@@ -120,7 +120,7 @@ const Icicles = styled('img')(
   },
   ({ contact }: { contact?: boolean }) => ({
     height: contact ? 150 : 500,
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       height: contact ? 200 : 675,
     },
   }),
@@ -130,16 +130,16 @@ const Snowflake = styled('img')(
   {
     height: 45,
     marginRight: spacing.ml,
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       marginRight: 0,
     },
-    [breakpoints.iphone5]: {
+    [breakpoints.small]: {
       height: 35,
     },
   },
   ({ hideOnDesktop }: { hideOnDesktop?: boolean }) => ({
     display: hideOnDesktop ? 'none' : 'block',
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       display: 'block',
     },
   }),
@@ -211,9 +211,9 @@ const Footer = ({
             <Label mb={spacing.ml}>Hours of Operation:</Label>
             <FooterInfoText>Monday – Friday: 8am – 5pm</FooterInfoText>
             <FooterInfoText>
-              Available for Emergency Calls
+              Available for emergency calls:
               <br />
-              Saturday, Sunday & After Hours
+              Saturday, Sunday & after hours
             </FooterInfoText>
           </FooterBottomText>
         </FooterInfo>
@@ -235,7 +235,7 @@ const Footer = ({
             &nbsp;Wicked Cool Refrigeration
           </t.Text>
           <t.Text color={colors.white} mb={[spacing.m, 0]}>
-            Site developed by Halsey Vandenberg
+            Developed by Halsey Vandenberg
           </t.Text>
         </FooterBottomText>
       </FooterBottom>

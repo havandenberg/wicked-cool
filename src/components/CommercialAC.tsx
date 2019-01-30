@@ -6,6 +6,7 @@ import l from '../styles/layout';
 import { breakpoints, colors, fontSizes, spacing } from '../styles/theme';
 import t from '../styles/typography';
 import CTAs from './CTAs';
+import withScroll from './hoc/withScroll';
 import {
   Content,
   PageContent,
@@ -22,7 +23,7 @@ export const Heading = styled(t.H2)({
 
 export const ServiceImage = styled('img')({
   flex: 1,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     margin: `0 auto ${spacing.xl}`,
     width: '70%',
   },
@@ -38,27 +39,25 @@ const CommercialAC = () => (
     <l.Row columnOnMobile spaceBetween mb={[spacing.xl, spacing.xl]}>
       <ServiceImage src={CommercialACImg} />
       <TopContent fontSize={fontSizes.largeText} ml={[0, spacing.xxl]}>
-        Keep your systems in efficient condition with commercial air
-        conditioning repair from Wicked Cool Refrigeration in Laconia, New
-        Hampshire. Our company provides reliable service, maintenance, and
-        installation for both rooftop units and split systems.
+        Keep your air conditioning systems running efficiently with service from
+        Wicked Cool Refrigeration. Our company provides reliable service,
+        maintenance, and installation for both rooftop units and split systems.
       </TopContent>
     </l.Row>
     <Heading center mb={spacing.xl}>
       When Your A/C Freezes Up
     </Heading>
     <Content fontSize={fontSizes.largeText} mb={[spacing.xl, spacing.xxxxxl]}>
-      Broken parts and poor maintenance can cause your unit to either completely
-      freeze up, or freeze up a little here and there. You should call a
-      professional immediately. Our company can often save you time and money by
-      fixing a minor problem in your equipment before it escalates.
-      Additionally, we provide proper installation of new units for safety and
-      efficiency.
+      Broken parts and poor maintenance can cause your system to freeze up. You
+      should call Wicked Cool Refrigeration immediately. We can often save you
+      time and money by fixing minor problems in your equipment before it
+      escalates. Additionally, we provide proper installation of new units for
+      safety and efficiency.
       <l.Space mt={[spacing.ml, spacing.xl]} />
-      Make sure to examine your equipment to ensure it is the right equipment
-      for your building. When you work with our company, we make sure you have
-      the proper ventilation for good air circulation and unit efficiency. Our
-      experts specialize in the following models:
+      Wicked Cool will examine your equipment to ensure it is the right
+      equipment for your building. When you work with our company, we make sure
+      you have the proper ventilation for good air circulation and unit
+      efficiency. We specialize in the following models and more:
     </Content>
     <ServicesRow
       alignTop
@@ -107,4 +106,4 @@ const CommercialAC = () => (
   </PageContent>
 );
 
-export default CommercialAC;
+export default withScroll(CommercialAC);

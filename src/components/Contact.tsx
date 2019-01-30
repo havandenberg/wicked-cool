@@ -18,6 +18,7 @@ import {
 } from '../styles/theme';
 import t from '../styles/typography';
 import { ESTIMATE_ACTION, SERVICE_ACTION } from '../utils/constants';
+import { scrollToId } from '../utils/scroll';
 import ContactForm from './ContactForm';
 import { PhoneIcon } from './CTAs';
 import {
@@ -25,6 +26,7 @@ import {
   FooterInfo as ContactInfo,
   FooterInfoText as InfoText,
 } from './Footer';
+import withScroll from './hoc/withScroll';
 import { PageContent, PageTitle } from './Home';
 
 const Action = styled(Link)(
@@ -56,7 +58,7 @@ const Action = styled(Link)(
     position: 'relative',
     transition: transitions.default,
     zIndex: 1,
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       ':last-child': {
         marginRight: 0,
       },
@@ -64,7 +66,7 @@ const Action = styled(Link)(
       marginRight: spacing.ml,
       padding: spacing.m,
     },
-    [breakpoints.iphone5]: {
+    [breakpoints.small]: {
       fontSize: fontSizes.text,
       padding: spacing.s,
     },
@@ -77,7 +79,7 @@ const Action = styled(Link)(
 );
 
 const ContactInfoInner = styled('div')({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
@@ -85,14 +87,14 @@ const ContactInfoInner = styled('div')({
 });
 
 const ContactLabels = styled(l.Space)({
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     display: 'none',
   },
 });
 
 const ContactText = styled(InfoText)({
   color: colors.darkBlue,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.largeText,
   },
 });
@@ -100,89 +102,103 @@ const ContactText = styled(InfoText)({
 const Snowflake = styled('img')({
   height: spacing.xxl,
   margin: `0 ${spacing.xxl}`,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     display: 'none',
   },
 });
 
-const Contact = ({
-  location,
-}: {
+interface Props {
   location: {
     search: string;
   };
-}) => {
-  const values = parse(location.search);
-  return (
-    <PageContent>
-      <PageTitle center mb={[spacing.xl, spacing.xxxxl]}>
-        Contact Us
-      </PageTitle>
-      <ContactInfo alignTop spaceBetween mb={[spacing.xl, spacing.xxl]}>
-        <div>
-          <l.Row alignTop>
-            <ContactLabels mr={spacing.xl}>
-              <ContactText bold>Address:</ContactText>
-              <ContactText bold mt={[spacing.xl, spacing.xxl]}>
-                Phone:
-              </ContactText>
-              <ContactText bold>Email:</ContactText>
-            </ContactLabels>
-            <ContactInfoInner>
-              <ContactText>
-                315 Hillcrest Dr
-                <br />
-                Laconia, NH 03246
-              </ContactText>
-              <ContactText>
-                <t.Anchor
-                  border={borders.darkBlue}
-                  color={colors.darkBlue}
-                  href="tel:6035240445"
-                >
-                  <PhoneIcon src={PhoneImg} />
-                  603-524-0445
-                </t.Anchor>
-              </ContactText>
-              <ContactText>
-                <t.Anchor
-                  border={borders.darkBlue}
-                  color={colors.darkBlue}
-                  href="mailto:wickedcool444@gmail.com"
-                >
-                  <PhoneIcon height={spacing.l} src={EmailImg} />
-                  wickedcool444@gmail.com
-                </t.Anchor>
-              </ContactText>
-            </ContactInfoInner>
-          </l.Row>
-        </div>
-        <BottomText>
-          <t.H3 mb={spacing.ml} mt={[spacing.ml, 0]}>
-            Hours of Operation:
-          </t.H3>
-          <ContactText>Monday – Friday: 8am – 5pm</ContactText>
-          <ContactText>Closed Saturday & Sunday</ContactText>
-        </BottomText>
-      </ContactInfo>
-      <l.CenteredRow my={[spacing.m, spacing.xxxl]}>
-        <Action
-          active={values.action !== SERVICE_ACTION}
-          to={`/contact?action=${ESTIMATE_ACTION}`}
-        >
-          Request Estimate
-        </Action>
-        <Snowflake src={SnowflakeImg} />
-        <Action
-          active={values.action === SERVICE_ACTION}
-          to={`/contact?action=${SERVICE_ACTION}`}
-        >
-          Schedule Service
-        </Action>
-      </l.CenteredRow>
-      <ContactForm action={values.action} />
-    </PageContent>
-  );
-};
+}
 
-export default Contact;
+class Contact extends React.Component<Props> {
+  componentDidMount() {
+    const values = parse(this.props.location.search);
+    if (values.action) {
+      scrollToId('contact-form');
+    }
+  }
+
+  render() {
+    const values = parse(this.props.location.search);
+    return (
+      <PageContent>
+        <PageTitle center mb={[spacing.xl, spacing.xxxxl]}>
+          Contact Us
+        </PageTitle>
+        <ContactInfo alignTop spaceBetween mb={[spacing.xl, spacing.xxl]}>
+          <div>
+            <l.Row alignTop>
+              <ContactLabels mr={spacing.xl}>
+                <ContactText bold>Address:</ContactText>
+                <ContactText bold mt={[spacing.xl, spacing.xxl]}>
+                  Phone:
+                </ContactText>
+                <ContactText bold>Email:</ContactText>
+              </ContactLabels>
+              <ContactInfoInner>
+                <ContactText>
+                  315 Hillcrest Dr
+                  <br />
+                  Laconia, NH 03246
+                </ContactText>
+                <ContactText>
+                  <t.Anchor
+                    border={borders.darkBlue}
+                    color={colors.darkBlue}
+                    href="tel:6035240445"
+                  >
+                    <PhoneIcon src={PhoneImg} />
+                    603-524-0445
+                  </t.Anchor>
+                </ContactText>
+                <ContactText>
+                  <t.Anchor
+                    border={borders.darkBlue}
+                    color={colors.darkBlue}
+                    href="mailto:wickedcool444@gmail.com"
+                  >
+                    <PhoneIcon height={spacing.l} src={EmailImg} />
+                    wickedcool444@gmail.com
+                  </t.Anchor>
+                </ContactText>
+              </ContactInfoInner>
+            </l.Row>
+          </div>
+          <BottomText>
+            <t.H3 mb={spacing.ml} mt={[spacing.ml, 0]}>
+              Hours of Operation:
+            </t.H3>
+            <ContactText>Monday – Friday: 8am – 5pm</ContactText>
+            <ContactText>
+              Available for emergency calls:
+              <br />
+              Saturday, Sunday & after hours
+            </ContactText>
+          </BottomText>
+        </ContactInfo>
+        <div id="contact-form" />
+        <l.CenteredRow my={[spacing.m, spacing.xxxl]}>
+          <Action
+            active={values.action !== SERVICE_ACTION}
+            to={`/contact?action=${ESTIMATE_ACTION}`}
+          >
+            Request Estimate
+          </Action>
+          <Snowflake src={SnowflakeImg} />
+          <Action
+            active={values.action === SERVICE_ACTION}
+            to={`/contact?action=${SERVICE_ACTION}`}
+          >
+            Schedule Service
+          </Action>
+        </l.CenteredRow>
+        <ContactForm action={values.action} />
+      </PageContent>
+    );
+  }
+}
+
+export default withScroll(Contact);

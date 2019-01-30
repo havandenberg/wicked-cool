@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { NavLink } from 'react-router-dom';
+import * as Sticky from 'react-stickynode';
 import l from '../styles/layout';
 import {
   breakpoints,
@@ -43,7 +44,7 @@ const NavItemText = styled(t.Text)({
   padding: spacing.m,
   position: 'relative',
   zIndex: 1,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: 10,
     height: 36,
     padding: spacing.s,
@@ -68,13 +69,15 @@ const NavWrapper = styled(l.CenteredRow)({
 });
 
 const Nav = () => (
-  <NavWrapper>
-    <NavItem text="Home" to="/" />
-    <NavItem text="Commercial A/C" to="/commercial-ac" />
-    <NavItem text="Freezer & Cooler" to="/freezer-cooler" />
-    <NavItem text="Maintenance Plans" to="/maintenance-plans" />
-    <NavItem text="Contact" to="/contact" />
-  </NavWrapper>
+  <Sticky activeClass="active-sticky" innerZ={2}>
+    <NavWrapper>
+      <NavItem text="Home" to="/" />
+      <NavItem text="Commercial A/C" to="/commercial-ac" />
+      <NavItem text="Freezer & Cooler" to="/freezer-cooler" />
+      <NavItem text="Maintenance Plans" to="/maintenance-plans" />
+      <NavItem text="Contact" to="/contact" />
+    </NavWrapper>
+  </Sticky>
 );
 
 export default Nav;

@@ -20,10 +20,10 @@ const Description = styled(t.Text)({
   fontSize: fontSizes.h2,
   maxWidth: 500,
   width: '50%',
-  [breakpoints.tabletOnly]: {
+  [breakpoints.tablet]: {
     width: '80%',
   },
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     fontSize: fontSizes.text,
     width: '90%',
   },
@@ -39,7 +39,7 @@ const Icicles = styled('img')({
   marginLeft: '50%',
   transform: 'translateX(-50%)',
   width: maxWidth,
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     height: 80,
   },
 });
@@ -47,10 +47,10 @@ const Icicles = styled('img')({
 const Snowflake = styled('img')(
   {
     height: 100,
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       height: 40,
     },
-    [breakpoints.iphone5]: {
+    [breakpoints.small]: {
       height: 30,
     },
   },
@@ -66,7 +66,7 @@ const TopTextWrapper = styled(l.Row)({
   top: spacing.s,
   transform: 'translateX(-50%)',
   width: '100%',
-  [breakpoints.mobileOnly]: {
+  [breakpoints.mobile]: {
     padding: `0 ${spacing.s}`,
     top: spacing.t,
   },

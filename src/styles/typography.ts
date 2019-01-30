@@ -37,10 +37,10 @@ const Title = styled('div')(
     textShadow: `-1px 2px ${colors.darkBlue}, 0 2px ${
       colors.darkBlue
     }, 1px 2px ${colors.darkBlue}, 0 2px ${colors.darkBlue}`,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.title,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: mobileSizes.title,
     },
   },
@@ -54,10 +54,10 @@ const Subtitle = styled('div')(
     fontSize: fontSizes.subtitle,
     fontWeight: 200,
     textShadow: shadows.text,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.subtitle,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: mobileSizes.subtitle,
     },
   },
@@ -72,10 +72,10 @@ const H1 = styled('h1')(
     margin: 0,
     padding: 0,
     textShadow: shadows.text,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.h1,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: mobileSizes.h1,
     },
   },
@@ -90,10 +90,10 @@ const H2 = styled('h2')(
     margin: 0,
     padding: 0,
     textShadow: shadows.text,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.h2,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: mobileSizes.h2,
     },
   },
@@ -107,10 +107,10 @@ const H3 = styled('h3')(
     fontSize: fontSizes.largeText,
     margin: 0,
     padding: 0,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.largeText,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: tabletSizes.largeText,
     },
   },
@@ -123,10 +123,10 @@ const Text = styled('div')(
     fontFamily: fonts.cuprum,
     fontSize: fontSizes.text,
     letterSpacing: 1.5,
-    [breakpoints.tabletOnly]: {
+    [breakpoints.tablet]: {
       fontSize: tabletSizes.text,
     },
-    [breakpoints.mobileOnly]: {
+    [breakpoints.mobile]: {
       fontSize: mobileSizes.text,
     },
   },
