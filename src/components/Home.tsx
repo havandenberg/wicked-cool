@@ -1,9 +1,6 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
-import CommercialACImg from '../assets/images/commercial-ac-home.svg';
-import FreezerCoolerImg from '../assets/images/freezer-cooler-home.svg';
-import MaintenanceImg from '../assets/images/maintenance-home.svg';
 import SnowflakeImg from '../assets/images/snowflake-service.svg';
 import l from '../styles/layout';
 import {
@@ -16,6 +13,8 @@ import {
   transitions,
 } from '../styles/theme';
 import t from '../styles/typography';
+import { ASSETS_PATH } from '../utils/constants';
+import { isMobileOnly } from '../utils/screensize';
 import CTAs from './CTAs';
 import withScroll from './hoc/withScroll';
 
@@ -101,7 +100,13 @@ const Home = () => (
     </PageTitle>
     <l.Row columnOnMobile spaceBetween mb={[spacing.xl, spacing.xxxxl]}>
       <ServiceLink to="/commercial-ac">
-        <img src={CommercialACImg} />
+        <l.CenteredRow height={175} width="100%">
+          <l.Img
+            height={isMobileOnly() ? 175 : undefined}
+            src={`${ASSETS_PATH}/outside-condensing-units.jpg`}
+            width={isMobileOnly() ? undefined : 175}
+          />
+        </l.CenteredRow>
         <ServiceTitle className="service-title" mt={spacing.l} shadow={true}>
           Commercial Residential
           <Break />
@@ -109,14 +114,26 @@ const Home = () => (
         </ServiceTitle>
       </ServiceLink>
       <ServiceLink to="/freezer-cooler">
-        <img src={FreezerCoolerImg} />
+        <l.CenteredRow height={175} width="100%">
+          <l.Img
+            height={isMobileOnly() ? 175 : undefined}
+            src={`${ASSETS_PATH}/wooden-wine-cooler-feat.png`}
+            width={isMobileOnly() ? undefined : 175}
+          />
+        </l.CenteredRow>
         <ServiceTitle className="service-title" mt={spacing.l} shadow>
           Commercial Cooler &<Break />
           &nbsp;Freezer Repair
         </ServiceTitle>
       </ServiceLink>
       <ServiceLink to="/maintenance-plans">
-        <img src={MaintenanceImg} />
+        <l.CenteredRow height={175} width="100%">
+          <l.Img
+            height={isMobileOnly() ? 175 : undefined}
+            src={`${ASSETS_PATH}/maintenance.png`}
+            width={isMobileOnly() ? undefined : 175}
+          />
+        </l.CenteredRow>
         <ServiceTitle className="service-title" mt={spacing.l} shadow>
           Preventative Maintenance Plans
         </ServiceTitle>
@@ -140,8 +157,7 @@ const Home = () => (
       columnOnMobile
       spaceBetween
       mb={[spacing.xxl, spacing.xxxxxl]}
-      px={[0, spacing.l]}
-    >
+      px={[0, spacing.l]}>
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />

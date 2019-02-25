@@ -44,7 +44,9 @@ export interface Image {
 }
 
 interface Props {
-  customStyles?: object;
+  customStyles?: {
+    [key: string]: number | string | Array<number | string>;
+  };
   image: Image;
 }
 
@@ -59,7 +61,19 @@ const GalleryImage = ({ customStyles, image }: Props) => (
         showImageCount={false}
       />
     </GalleryWrapper>
-    <Image height={image.thumbnailHeight} src={image.src} />
+    <Image
+      height={
+        customStyles && customStyles.thumbnailHeight
+          ? customStyles.thumbnailHeight
+          : image.thumbnailHeight
+      }
+      src={image.src}
+      width={
+        customStyles && customStyles.thumbnailWidth
+          ? customStyles.thumbnailWidth
+          : image.thumbnailWidth
+      }
+    />
     <l.Space display="inline-block" mb={[spacing.ml, 0]} mt={spacing.m}>
       <l.Caption>{image.caption}</l.Caption>
     </l.Space>

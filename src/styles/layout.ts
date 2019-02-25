@@ -99,11 +99,22 @@ const CenteredRow = styled(Row)({
 
 const Space = styled('div')(space);
 
+const GalleryWrapper = styled(Space)({
+  display: 'block',
+  minHeight: '1px',
+  overflow: 'auto',
+  width: '100%',
+});
+
+const Img = styled('img')(height, space, width);
+
 export default {
   Break,
   Caption,
   Center,
   CenteredRow,
+  GalleryWrapper,
+  Img,
   Row,
   Space,
 };

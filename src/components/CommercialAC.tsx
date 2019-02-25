@@ -1,10 +1,18 @@
 import * as React from 'react';
 import styled from 'react-emotion';
-import CommercialACImg from '../assets/images/commercial-ac.svg';
+import Gallery from 'react-grid-gallery';
+import { height, width } from 'styled-system';
 import SnowflakeImg from '../assets/images/snowflake-service.svg';
 import l from '../styles/layout';
-import { breakpoints, colors, fontSizes, spacing } from '../styles/theme';
+import {
+  breakpoints,
+  colors,
+  defaultImageOptions,
+  fontSizes,
+  spacing,
+} from '../styles/theme';
 import t from '../styles/typography';
+import { ASSETS_PATH } from '../utils/constants';
 import CTAs from './CTAs';
 import withScroll from './hoc/withScroll';
 import {
@@ -21,13 +29,18 @@ export const Heading = styled(t.H2)({
   fontWeight: 500,
 });
 
-export const ServiceImage = styled('img')({
-  flex: 1,
-  [breakpoints.mobile]: {
-    margin: `0 auto ${spacing.xl}`,
-    width: '70%',
+export const ServiceImage = styled('img')(
+  {
+    flex: 1,
+    width: '40%',
+    [breakpoints.mobile]: {
+      margin: `0 auto ${spacing.xl}`,
+      width: '70%',
+    },
   },
-});
+  height,
+  width,
+);
 
 export const TopContent = styled(Content)({ flex: 1 });
 
@@ -37,7 +50,7 @@ const CommercialAC = () => (
       Commercial A/C
     </PageTitle>
     <l.Row columnOnMobile spaceBetween mb={[spacing.xl, spacing.xl]}>
-      <ServiceImage src={CommercialACImg} />
+      <ServiceImage src={`${ASSETS_PATH}/outside-condensing-units.jpg`} />
       <TopContent fontSize={fontSizes.largeText} ml={[0, spacing.xxl]}>
         Keep your air conditioning systems running efficiently with service from
         Wicked Cool Refrigeration. Our company provides reliable service,
@@ -64,8 +77,7 @@ const CommercialAC = () => (
       columnOnMobile
       spaceBetween
       mb={[spacing.xl, spacing.xxxxxl]}
-      px={[0, spacing.l]}
-    >
+      px={[0, spacing.l]}>
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
@@ -101,6 +113,32 @@ const CommercialAC = () => (
         </l.Row>
       </div>
     </ServicesRow>
+    <Heading center mb={spacing.xl}>
+      Featured Projects
+    </Heading>
+    <l.GalleryWrapper mb={[spacing.xl, spacing.xxxxxl]}>
+      <Gallery
+        enableImageSelection={false}
+        images={[
+          {
+            ...defaultImageOptions,
+            caption: 'A commercial furnace',
+            src: `${ASSETS_PATH}/ippolitos-furnace.jpg`,
+            thumbnail: `${ASSETS_PATH}/ippolitos-furnace.jpg`,
+            thumbnailCaption: 'A commercial furnace',
+          },
+          {
+            ...defaultImageOptions,
+            caption: 'Outside condensing units',
+            src: `${ASSETS_PATH}/outside-condensing-units.jpg`,
+            thumbnail: `${ASSETS_PATH}/outside-condensing-units.jpg`,
+            thumbnailCaption: 'Outside condensing units',
+          },
+        ]}
+        rowHeight={300}
+        showImageCount={false}
+      />
+    </l.GalleryWrapper>
     <CTAs />
     <l.Space mt={[0, spacing.xxxxxl]} />
   </PageContent>

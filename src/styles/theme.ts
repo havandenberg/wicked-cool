@@ -85,7 +85,12 @@ export const gradients = {
 export const maxWidth = '1400px';
 
 export const thumbnailHeight = 300;
-export const thumbnailWidth = 'auto';
+export const thumbnailWidth = 300;
+
+export const defaultImageOptions = {
+  thumbnailHeight,
+  thumbnailWidth,
+};
 
 export const scrollOptions = {
   duration: 300,
