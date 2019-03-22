@@ -82,7 +82,7 @@ export const gradients = {
   lightBlue: 'linear-gradient(to top, #168ACF, #40B1F4)',
 };
 
-export const maxWidth = '1400px';
+export const maxWidth = '1408px';
 
 export const thumbnailHeight = 300;
 export const thumbnailWidth = 300;

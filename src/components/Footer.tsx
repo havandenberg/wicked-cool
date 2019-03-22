@@ -1,9 +1,12 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { withRouter } from 'react-router-dom';
+import { isMobileOnly } from 'src/utils/screensize';
 import { space } from 'styled-system';
+import BottomIciclesMobileImg from '../assets/images/bottom-icicles-mobile.svg';
 import BottomIciclesImg from '../assets/images/bottom-icicles.svg';
 import EmailImg from '../assets/images/email-white.svg';
+import FBImg from '../assets/images/facebook.svg';
 import PhoneImg from '../assets/images/phone-white.svg';
 import SnowflakeImg from '../assets/images/snowflake-footer.svg';
 import l from '../styles/layout';
@@ -16,6 +19,7 @@ import {
   spacing,
 } from '../styles/theme';
 import t from '../styles/typography';
+import { FACEBOOK_PATH } from '../utils/constants';
 import { PhoneIcon } from './CTAs';
 
 const FooterBottom = styled(l.Row)(
@@ -66,7 +70,7 @@ export const FooterInfoTextWrapper = styled(l.Space)({
 
 const FooterInner = styled('div')({
   alignItems: 'center',
-  bottom: spacing.s,
+  bottom: 0,
   color: colors.white,
   display: 'flex',
   flexDirection: 'column',
@@ -81,7 +85,7 @@ const FooterInner = styled('div')({
   },
 });
 
-const FooterWrapper = styled('div')({
+const FooterWrapper = styled(l.Space)({
   overflow: 'hidden',
   position: 'relative',
 });
@@ -115,13 +119,14 @@ const LogoText = styled(t.Text)({
 const Icicles = styled('img')(
   {
     marginLeft: '50%',
-    transform: 'translateX(-50%)',
+    transform: 'translate(-50%, 8px)',
     width: maxWidth,
   },
   ({ contact }: { contact?: boolean }) => ({
-    height: contact ? 150 : 500,
+    height: contact ? 150 : 580,
     [breakpoints.mobile]: {
-      height: contact ? 200 : 675,
+      height: contact ? 200 : 700,
+      width: '100%',
     },
   }),
 );
@@ -152,10 +157,10 @@ const Footer = ({
     pathname: string;
   };
 }) => (
-  <FooterWrapper>
+  <FooterWrapper mt={spacing.xxxl}>
     <Icicles
       contact={location.pathname === '/contact'}
-      src={BottomIciclesImg}
+      src={isMobileOnly() ? BottomIciclesMobileImg : BottomIciclesImg}
     />
     <FooterInner>
       {location.pathname !== '/contact' && (
@@ -163,15 +168,14 @@ const Footer = ({
           alignTop
           spaceBetween
           width="80%"
-          mb={[spacing.m, spacing.xxl]}
-        >
+          mb={[spacing.m, spacing.xxl]}>
           <div>
             <Label mb={spacing.ml}>Contact Information:</Label>
             <l.Row alignTop>
               <FooterInfoTextWrapper
+                mb={[spacing.l, 0, 0]}
                 ml={[spacing.s, 0]}
-                mr={[spacing.ml, spacing.xl]}
-              >
+                mr={[spacing.ml, spacing.xl]}>
                 <FooterInfoText>Address:</FooterInfoText>
                 <FooterInfoText mt={[spacing.xl, spacing.xxl]}>
                   Phone:
@@ -188,8 +192,7 @@ const Footer = ({
                   <t.Anchor
                     border={borders.white}
                     color={colors.white}
-                    href="tel:6035240445"
-                  >
+                    href="tel:6035240445">
                     <PhoneIcon src={PhoneImg} />
                     603-524-0445
                   </t.Anchor>
@@ -198,8 +201,7 @@ const Footer = ({
                   <t.Anchor
                     border={borders.white}
                     color={colors.white}
-                    href="mailto:wickedcool444@gmail.com"
-                  >
+                    href="mailto:wickedcool444@gmail.com">
                     <PhoneIcon height={spacing.l} src={EmailImg} />
                     wickedcool444@gmail.com
                   </t.Anchor>
@@ -210,20 +212,35 @@ const Footer = ({
           <FooterBottomText mt={[spacing.s, 0]}>
             <Label mb={spacing.ml}>Hours of Operation:</Label>
             <FooterInfoText>Monday – Friday: 8am – 5pm</FooterInfoText>
-            <FooterInfoText>
+            <FooterInfoText mb={[spacing.ml, 0, 0]}>
               Available for emergency calls:
               <br />
               Saturday, Sunday & after hours
             </FooterInfoText>
+            <t.Anchor
+              href={FACEBOOK_PATH}
+              my={[spacing.m, spacing.l, spacing.l]}
+              target="_blank">
+              <l.Img height={spacing.xl} src={FBImg} />
+            </t.Anchor>
           </FooterBottomText>
         </FooterInfo>
       )}
+      {location.pathname === '/contact' && 
+        <l.CenteredRow mb={[`-${spacing.s}`, `-${spacing.xxxl}`, `-${spacing.xxxl}`]}>
+          <t.Anchor
+              href={FACEBOOK_PATH}
+              target="_blank"
+              zIndex={10}>
+              <l.Img height={[spacing.l, spacing.xl, spacing.xl]} src={FBImg} />
+            </t.Anchor>
+        </l.CenteredRow>
+      }
       <FooterBottom
         contact={location.pathname === '/contact'}
         px={[spacing.s, spacing.l]}
         py={spacing.m}
-        spaceBetween
-      >
+        spaceBetween>
         <LogoRow>
           <Snowflake src={SnowflakeImg} />
           <LogoText>Wicked Cool Refrigeration</LogoText>

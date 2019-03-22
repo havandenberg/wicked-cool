@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import { color as colorFunc, fontSize, space } from 'styled-system';
+import { color as colorFunc, fontSize, space, zIndex } from 'styled-system';
 import {
   borders,
   breakpoints,
@@ -26,6 +26,7 @@ const textOptions = [
     whiteSpace: nowrap ? 'nowrap' : undefined,
   }),
   space,
+  zIndex,
 ];
 
 const Title = styled('div')(

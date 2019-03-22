@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
+import FBImg from '../assets/images/facebook.svg';
 import PhoneImg from '../assets/images/phone-white.svg';
 import SnowflakeImg from '../assets/images/snowflake-1.svg';
 import TopIciclesImg from '../assets/images/top-icicles.svg';
@@ -14,6 +15,7 @@ import {
   spacing,
 } from '../styles/theme';
 import t from '../styles/typography';
+import { FACEBOOK_PATH } from '../utils/constants';
 import { PhoneIcon } from './CTAs';
 
 const Description = styled(t.Text)({
@@ -75,23 +77,30 @@ const TopTextWrapper = styled(l.Row)({
 const Header = () => (
   <HeaderWrapper>
     <Icicles src={TopIciclesImg} />
-    <TopTextWrapper px={spacing.l} spaceBetween>
+    <TopTextWrapper alignTop px={spacing.l} spaceBetween>
       <Link to="/">
         <t.Text color={colors.white} fontSize={fontSizes.largeText}>
           Wicked Cool Refrigeration
         </t.Text>
       </Link>
-      <t.Text color={colors.white} fontSize={fontSizes.largeText}>
+      <l.Row>
         <t.Anchor
-          border={borders.white}
-          color={colors.white}
-          href="tel:6035240445"
-          pb="2px"
-        >
-          <PhoneIcon height={[spacing.sm, spacing.m]} src={PhoneImg} />
-          603-524-0445
+          href={FACEBOOK_PATH}
+          mr={[spacing.m, spacing.xxl, spacing.xxl]}
+          target="_blank">
+          <l.Img height={[spacing.m, spacing.ml, spacing.l]} src={FBImg} />
         </t.Anchor>
-      </t.Text>
+        <t.Text color={colors.white} fontSize={fontSizes.largeText}>
+          <t.Anchor
+            border={borders.white}
+            color={colors.white}
+            href="tel:6035240445"
+            pb="2px">
+            <PhoneIcon height={[spacing.sm, spacing.m]} src={PhoneImg} />
+            603-524-0445
+          </t.Anchor>
+        </t.Text>
+      </l.Row>
     </TopTextWrapper>
     <l.CenteredRow mt={[`-${spacing.sm}`, 0]}>
       <Snowflake src={SnowflakeImg} />
@@ -109,8 +118,7 @@ const Header = () => (
       center
       my={[spacing.m, spacing.l]}
       mx="
-          auto"
-    >
+          auto">
       Professional Commercial Refrigeration & A/C Installation, Service, &
       Repair Specialists
     </Description>
