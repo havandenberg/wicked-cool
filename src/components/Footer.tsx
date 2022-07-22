@@ -168,14 +168,16 @@ const Footer = ({
           alignTop
           spaceBetween
           width="80%"
-          mb={[spacing.m, spacing.xxl]}>
+          mb={[spacing.m, spacing.xxl]}
+        >
           <div>
             <Label mb={spacing.ml}>Contact Information:</Label>
             <l.Row alignTop>
               <FooterInfoTextWrapper
                 mb={[spacing.l, 0, 0]}
                 ml={[spacing.s, 0]}
-                mr={[spacing.ml, spacing.xl]}>
+                mr={[spacing.ml, spacing.xl]}
+              >
                 <FooterInfoText>Address:</FooterInfoText>
                 <FooterInfoText mt={[spacing.xl, spacing.xxl]}>
                   Phone:
@@ -192,7 +194,8 @@ const Footer = ({
                   <t.Anchor
                     border={borders.white}
                     color={colors.white}
-                    href="tel:6035240445">
+                    href="tel:6035240445"
+                  >
                     <PhoneIcon src={PhoneImg} />
                     603-524-0445
                   </t.Anchor>
@@ -201,7 +204,8 @@ const Footer = ({
                   <t.Anchor
                     border={borders.white}
                     color={colors.white}
-                    href="mailto:wickedcool444@gmail.com">
+                    href="mailto:wickedcool444@gmail.com"
+                  >
                     <PhoneIcon height={spacing.l} src={EmailImg} />
                     wickedcool444@gmail.com
                   </t.Anchor>
@@ -212,35 +216,31 @@ const Footer = ({
           <FooterBottomText mt={[spacing.s, 0]}>
             <Label mb={spacing.ml}>Hours of Operation:</Label>
             <FooterInfoText>Monday – Friday: 8am – 5pm</FooterInfoText>
-            <FooterInfoText mb={[spacing.ml, 0, 0]}>
-              Available for emergency calls:
-              <br />
-              Saturday, Sunday & after hours
-            </FooterInfoText>
             <t.Anchor
               href={FACEBOOK_PATH}
               my={[spacing.m, spacing.l, spacing.l]}
-              target="_blank">
+              target="_blank"
+            >
               <l.Img height={spacing.xl} src={FBImg} />
             </t.Anchor>
           </FooterBottomText>
         </FooterInfo>
       )}
-      {location.pathname === '/contact' && 
-        <l.CenteredRow mb={[`-${spacing.s}`, `-${spacing.xxxl}`, `-${spacing.xxxl}`]}>
-          <t.Anchor
-              href={FACEBOOK_PATH}
-              target="_blank"
-              zIndex={10}>
-              <l.Img height={[spacing.l, spacing.xl, spacing.xl]} src={FBImg} />
-            </t.Anchor>
+      {location.pathname === '/contact' && (
+        <l.CenteredRow
+          mb={[`-${spacing.s}`, `-${spacing.xxxl}`, `-${spacing.xxxl}`]}
+        >
+          <t.Anchor href={FACEBOOK_PATH} target="_blank" zIndex={10}>
+            <l.Img height={[spacing.l, spacing.xl, spacing.xl]} src={FBImg} />
+          </t.Anchor>
         </l.CenteredRow>
-      }
+      )}
       <FooterBottom
         contact={location.pathname === '/contact'}
         px={[spacing.s, spacing.l]}
         py={spacing.m}
-        spaceBetween>
+        spaceBetween
+      >
         <LogoRow>
           <Snowflake src={SnowflakeImg} />
           <LogoText>Wicked Cool Refrigeration</LogoText>

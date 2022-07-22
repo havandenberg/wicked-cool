@@ -2,8 +2,9 @@ import * as React from 'react';
 import SnowflakeImg from '../assets/images/snowflake-service.svg';
 import l from '../styles/layout';
 import { fontSizes, spacing } from '../styles/theme';
-import { ASSETS_PATH } from '../utils/constants';
-import { Heading, ServiceImage, TopContent } from './CommercialAC';
+// import { ASSETS_PATH } from '../utils/constants';
+// import { Heading, ServiceImage, TopContent } from './CommercialAC';
+import { Heading, TopContent } from './CommercialAC';
 import CTAs from './CTAs';
 import withScroll from './hoc/withScroll';
 import {
@@ -21,8 +22,9 @@ const MaintenancePlans = () => (
       Maintenance Plans
     </PageTitle>
     <l.Row columnOnMobile spaceBetween mb={[spacing.ml, spacing.xxl]}>
-      <ServiceImage src={`${ASSETS_PATH}/maintenance.png`} />
-      <TopContent fontSize={fontSizes.largeText} ml={[0, spacing.xxl]}>
+      {/* <ServiceImage src={`${ASSETS_PATH}/maintenance.png`} /> */}
+      {/* <TopContent fontSize={fontSizes.largeText} ml={[0, spacing.xxl]}> */}
+      <TopContent fontSize={fontSizes.largeText}>
         Save money on your equipment with a regularly scheduled maintenance plan
         from Wicked Cool Refrigeration. Proper maintenance is the best way to
         ensure your equipment performs at its best, and to detect or prevent
@@ -43,7 +45,8 @@ const MaintenancePlans = () => (
       columnOnMobile
       spaceBetween
       mb={[spacing.xl, spacing.xxxxxl]}
-      px={[0, spacing.l]}>
+      px={[0, spacing.l]}
+    >
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />

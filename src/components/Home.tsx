@@ -68,6 +68,7 @@ const ServiceLink = styled(Link)({
 });
 
 export const ServicesRow = styled(l.Row)({
+  alignItems: 'flex-start',
   [breakpoints.mobile]: {
     alignItems: 'flex-start',
     marginLeft: spacing.xl,
@@ -108,7 +109,7 @@ const Home = () => (
           />
         </l.CenteredRow>
         <ServiceTitle className="service-title" mt={spacing.l} shadow={true}>
-          Commercial Residential
+          Commercial
           <Break />
           &nbsp;A/C Service
         </ServiceTitle>
@@ -127,13 +128,13 @@ const Home = () => (
         </ServiceTitle>
       </ServiceLink>
       <ServiceLink to="/maintenance-plans">
-        <l.CenteredRow height={175} width="100%">
+        {/* <l.CenteredRow height={175} width="100%">
           <l.Img
             height={isMobileOnly() ? 175 : undefined}
             src={`${ASSETS_PATH}/maintenance.png`}
             width={isMobileOnly() ? undefined : 175}
           />
-        </l.CenteredRow>
+        </l.CenteredRow> */}
         <ServiceTitle className="service-title" mt={spacing.l} shadow>
           Preventative Maintenance Plans
         </ServiceTitle>
@@ -157,7 +158,8 @@ const Home = () => (
       columnOnMobile
       spaceBetween
       mb={[spacing.xxl, spacing.xxxxxl]}
-      px={[0, spacing.l]}>
+      px={[0, spacing.l]}
+    >
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />
@@ -169,10 +171,6 @@ const Home = () => (
         </l.Row>
       </div>
       <div>
-        <l.Row mb={[spacing.ml, spacing.xl]}>
-          <Snowflake src={SnowflakeImg} />
-          <ServiceTitle light>Emergency Repair Services</ServiceTitle>
-        </l.Row>
         <l.Row>
           <Snowflake src={SnowflakeImg} />
           <ServiceTitle light>Fully Licensed & Insured</ServiceTitle>

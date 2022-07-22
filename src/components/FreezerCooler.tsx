@@ -57,16 +57,17 @@ const FreezerCooler = () => (
       consistent temperature, dripping, or freezing unusually, call us
       immediately!
       <l.Space mt={[spacing.ml, spacing.xl]} />
-      Our technicians service walk-in refrigerations and freezers, commercial
-      ice machines, cold tables, deli tables, and much more. We specialize in
-      the following models and more:
+      Our technicians service walk-in coolers and freezers, commercial ice
+      machines, cold tables, deli tables, and much more. We specialize in the
+      following models and more:
     </Content>
     <ServicesRow
       alignTop
       columnOnMobile
       spaceBetween
       mb={[spacing.xl, spacing.xl]}
-      px={[0, spacing.l]}>
+      px={[0, spacing.l]}
+    >
       <div>
         <l.Row mb={[spacing.ml, spacing.xl]}>
           <Snowflake src={SnowflakeImg} />

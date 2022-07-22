@@ -135,7 +135,7 @@ const CTAs = () => (
       We're Hiring!
     </HiringTitle>
     <HiringText center>
-      We are seeking mechanically inclined individuals who are eager to learn.
+      We are seeking experienced mechanically inclined individuals.
       <br />
       <CallUs
         border={borders.lightBlue}
