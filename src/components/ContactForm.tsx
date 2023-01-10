@@ -342,10 +342,10 @@ class ContactForm extends React.Component<Props, State> {
                 <t.Anchor
                   border={borders.darkBlue}
                   color={colors.darkBlue}
-                  href="mailto:wickedcool444@gmail.com"
+                  href="mailto:service@wickedcoolmech.com"
                 >
                   <PhoneIcon height={spacing.l} src={EmailImg} />
-                  wickedcool444@gmail.com
+                  service@wickedcoolmech.com
                 </t.Anchor>
               </t.Text>
             )}

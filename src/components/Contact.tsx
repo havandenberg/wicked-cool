@@ -158,10 +158,10 @@ class Contact extends React.Component<Props> {
                   <t.Anchor
                     border={borders.darkBlue}
                     color={colors.darkBlue}
-                    href="mailto:wickedcool444@gmail.com"
+                    href="mailto:service@wickedcoolmech.com"
                   >
                     <PhoneIcon height={spacing.l} src={EmailImg} />
-                    wickedcool444@gmail.com
+                    service@wickedcoolmech.com
                   </t.Anchor>
                 </ContactText>
               </ContactInfoInner>

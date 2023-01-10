@@ -54,7 +54,7 @@ const UnderConstruction = () => (
     </t.Text>
     <Phone mt={spacing.l}>603-524-0445</Phone>
     <Or mt={spacing.s}>or</Or>
-    <Phone mt={spacing.s}>wickedcool444@gmail.com</Phone>
+    <Phone mt={spacing.s}>service@wickedcoolmech.com</Phone>
     <t.Text mt={spacing.l}>for any service requests.</t.Text>
   </Main>
 );

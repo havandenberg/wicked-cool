@@ -204,10 +204,10 @@ const Footer = ({
                   <t.Anchor
                     border={borders.white}
                     color={colors.white}
-                    href="mailto:wickedcool444@gmail.com"
+                    href="mailto:service@wickedcoolmech.com"
                   >
                     <PhoneIcon height={spacing.l} src={EmailImg} />
-                    wickedcool444@gmail.com
+                    service@wickedcoolmech.com
                   </t.Anchor>
                 </FooterInfoText>
               </div>
